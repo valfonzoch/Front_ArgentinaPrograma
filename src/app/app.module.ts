@@ -8,6 +8,7 @@ import { AcercaDeComponent } from './componentes/acerca-de/acerca-de.component';
 import { ExperienciaComponent } from './componentes/experiencia/experiencia.component';
 import { EducacionComponent } from './componentes/educacion/educacion.component';
 import { CertificacionesComponent } from './componentes/certificaciones/certificaciones.component';
+import { PorfolioService } from './servicios/porfolio.service';
 import { HttpClientModule} from'@angular/common/http';
 
 @NgModule({
