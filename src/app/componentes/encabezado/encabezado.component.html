@@ -1,24 +1,24 @@
 <div  class="card mat-card" id="firs-card">
 
     <div id="profile-background">
-        <img src="https://previews.123rf.com/images/monsitj/monsitj1708/monsitj170800091/84856053-c%C3%B3digo-de-programaci%C3%B3n-de-fondo-abstracto-de-la-tecnolog%C3%ADa-de-software-de-software-y-escribir-la-com.jpg" alt="">
+        <img [src]="miPorfolio.backImagen"/>
     </div>
 
     <div id="info" style="padding: 16px;">
 
         <div id="info-img">
-            <img class="profile-image" src="assets/img/foto.jpg" alt="">
+            <img class="profile-image" [src]="miPorfolio.imagen"/>
             <div  type="button" class="boton1"><img src="assets/img/icons8-pen-48.png" alt=""></div>
         </div>
 
         <div id="info-data">
             <div>
-                <h1>Vanessa Alfonzo</h1>
+                <h1>{{miPorfolio.name}}</h1>
                 <div id="info-company">
-                   <h2>Tester en Axoft</h2> 
+                   <h2>{{miPorfolio.position}}</h2> 
                 </div>
                 <div id="info-contact">
-                    <span>Buenos Aires (Argentina)</span>
+                    <span>{{miPorfolio.location}}</span>
                     <span><a href="#">Información de Contacto</a></span>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                 
                     </a></li>
                 <li><a href="http://www.enahp.com/pregrado/modulos/inicio/">
-                <img  class="school-image" width="150px"  src="http://www.mppef.gob.ve/wp-content/uploads/2017/03/ENAHP.jpg" alt="">
+                <img  class="school-image" width="150px"  src="http://www.mppef.gob.ve/wp-content/uploads/2017/03/ENAHP.jpg">
               </a></li>  
             </ul>
         </div>
