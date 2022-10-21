@@ -7,14 +7,12 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
   styleUrls: ['./certificaciones.component.css']
 })
 export class CertificacionesComponent implements OnInit {
-  miPorfolio: any;
+  certificacionesList: any;
   constructor(private datosPorfolio:PorfolioService) { }
 
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
-      console.log(data);
-      this.miPorfolio=data;
+      this.certificacionesList=data.certifications;
     });
   }
-
 }
