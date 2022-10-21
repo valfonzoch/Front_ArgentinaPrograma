@@ -1,173 +1,23 @@
-<div class="card mat-card">
+<div class="card mat-card" id="certificaciones">
     <h1>Certificaciones</h1>
     <ul>
-        <table>
+        <table *ngFor="let certificaciones of certificacionesList">
             <tr>
-            <th><img width="50px" src="https://media-exp1.licdn.com/dms/image/C560BAQGv-Dd7A2pQ0g/company-logo_200_200/0/1646458288684?e=1669852800&v=beta&t=ibzElrv6wmx7Y6X4T4V6Wn4bHk8GzwjscrQ8EM2NfWM" alt=""></th>
-            <th><h4>Programación Básica</h4></th>
+            <th><img width="50px" [src]="certificaciones.img" ></th>
+            <th><h4>{{certificaciones.title}}</h4></th>
             <tr>
                 <td></td>
-                <td><p >Argentina Programa</p></td>
+                <td><p>{{certificaciones.school}}</p></td>
             </tr>
             <tr>
                 <td></td>
-                <td><p>Expedición: Junio 2022</p></td>
+                <td><p>{{certificaciones.expedition}}</p></td>
             </tr> 
             <tr>
                 <td></td>
-                <td><a href="https://drive.google.com/file/d/1gK_NeBkOBUs5rpHNBFgc8JbsoxRq7IRd/view">Credencial</a></td>
+                <td><a [href]="certificaciones.certificate">Credencial</a></td>
             </tr>
             
-        </table>
-        <table>
-            <tr>
-                <th><img width="50px" src="https://media-exp1.licdn.com/dms/image/C4D0BAQE085qupw4Z-w/company-logo_200_200/0/1606791349939?e=1669852800&v=beta&t=BhC_jhj5V5vQVDVQAF-Fy1w6pUMD8mSQjFRPt9OqxHA" alt=""></th>
-                <th><h4>Testing QA Calidad del Software</h4></th>
-            <tr>
-                <td></td>
-                <td><p>Agencia de aprendisaje a los largo de la vida</p></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><p>Expedición: Diciembre 2021</p></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><a href="https://drive.google.com/file/d/12gy8juHJQqHNZIpaI1gHFPOeBhnMrmDd/view">Credencial</a></td>
-            </tr>
-            
-        </table>
-        <table>
-            <tr>
-                <th>
-                    <img width="50px" src="https://media-exp1.licdn.com/dms/image/C4D0BAQH2bbG2o4qkpA/company-logo_200_200/0/1622204276344?e=1669852800&v=beta&t=9yjpxfyjPtEPdoB9FLkd8bwpRZ4hJ8Fxzjt_aRYdsDY" alt="">
-                </th>
-                <th>
-                    <h4>Introducción a la Programación</h4>
-                </th>
-            <tr>
-                <td></td>
-                <td><p>Fundación Telefónica</p></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><p>Expedición: Septiembre 2021</p></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><a href="https://drive.google.com/file/d/1N6LfCB8xmNwVIJCMu6Ayu1S-pMfZKX5R/view">Credencial</a></td>
-            </tr>
-            
-        </table>
-        <table>
-            <tr>
-                <th>
-                    <img width="50px" src="https://media-exp1.licdn.com/dms/image/C4D0BAQFQr9e68bBOPQ/company-logo_200_200/0/1626275253364?e=1669852800&v=beta&t=SMRTUaBjaaWArx0nJXvI9W8DnKAabgcmNpOxdDhWBGg" alt="">
-                </th>
-                <th>
-                    <h4>Master SQL Server</h4>
-                </th>
-            <tr>
-                <td></td>
-                <td><p>Udemy</p></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><p>Expedición: Agosto 2021</p></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><a href="https://www.udemy.com/certificate/UC-41146eee-361f-43aa-b2a9-ee15db788904/">Credencial</a></td>
-            </tr>
-            
-        </table>
-        <table>
-            <tr>
-                <th>
-                    <img width="50px" src="https://media-exp1.licdn.com/dms/image/C4D0BAQFQr9e68bBOPQ/company-logo_200_200/0/1626275253364?e=1669852800&v=beta&t=SMRTUaBjaaWArx0nJXvI9W8DnKAabgcmNpOxdDhWBGg" alt="">
-                </th>
-                <th>
-                    <h4>Scrum Master</h4>
-                </th>
-            </tr>
-            <tr>
-                <td></td>
-                <td><p>Udemy</p></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><p>Expedición: Julio 2021</p></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td> <a href="https://www.udemy.com/certificate/UC-0b7306fb-552b-49ef-9bb7-b7082275bc87/">Credencial</a></td>
-            </tr>
-        </table>
-        <table>
-            <tr>
-                <th>
-                    <img width="50px" src="https://media-exp1.licdn.com/dms/image/C4D0BAQFQr9e68bBOPQ/company-logo_200_200/0/1626275253364?e=1669852800&v=beta&t=SMRTUaBjaaWArx0nJXvI9W8DnKAabgcmNpOxdDhWBGg" alt="">
-                </th>
-                <th>
-                    <h4>Consultor SAP modulo MM</h4>
-                </th>
-            </tr>
-            <tr>
-                <td></td>
-                <td><p>Udemy</p></td>
-            </tr>
-           <tr>
-               <td></td>
-               <td><p>Expedición: Septiembre 2020</p></td>
-           </tr>
-           <tr>
-               <td></td>
-               <td><a href="https://drive.google.com/file/d/151dO4sTSkJclPE7rhLu2T8bXGqd4N54y/view">Credencial</a></td>
-           </tr>
-        </table>
-        <table>
-            <tr>
-                <th>
-                    <img width="50px" src="https://media-exp1.licdn.com/dms/image/C4D0BAQGLSvaRkYAfww/company-logo_100_100/0/1519914462142?e=1669852800&v=beta&t=znjayXijmgDHmJ5GYMUFj_V44_X7celmQGxbunylJyA" alt="Introducción al Sistema SAP">
-                </th>
-                <th>
-                    <h4>Introducción al Sistema SAP</h4>
-                </th>
-            </tr>
-            <tr>
-                <td></td>
-                <td><p>Consejo Profesional de Ciencias Informáticas</p></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><p>Expedición: Mayo 2019</p></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><a href="https://drive.google.com/file/d/1yZJOlhb0j9oERnwiWElVrNfLFePWuI3K/view">Credencial</a></td>
-            </tr>
-        </table>
-        <table>
-            <tr>
-                <th>
-                    <img width="50px" src="https://www.kentronsistemas.com/wp-content/uploads/2019/07/Logo-kentron-e1563330431527.png" alt="">
-                </th>
-                <th>
-                     <h4>Asistente de Impuestos y Ordenación de Pagos</h4>
-                </th>
-            </tr>
-            <tr>
-                <td></td>
-                <td><p>Kentron Sistema de Información</p></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><p>Expedición: Abril 2010</p></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><a href="https://drive.google.com/file/d/1BYz4SiZbzBlQU5sbAy2QUXPen_qIy51g/view">Credencial</a></td>
-            </tr>
         </table>
     </ul>
 </div>

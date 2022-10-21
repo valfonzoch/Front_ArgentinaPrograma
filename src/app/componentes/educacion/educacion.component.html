@@ -1,20 +1,20 @@
-<div class="card mat-card">
+<div class="card mat-card" id="educacion">
     <h1>Educación</h1>
     <table>
         <tr>
-            <th><img  class="school-image" width="150px"  src="http://www.mppef.gob.ve/wp-content/uploads/2017/03/ENAHP.jpg" alt=""></th>
-            <th><h3>Escuela Nacional de Administracion y Hacienda Pública</h3></th>
+            <th><img  class="school-image" width="150px"  [src]="miPorfolio.education.img" ></th>
+            <th><h3>{{miPorfolio.education.college}}</h3></th>
         </tr>
         <tr>
             <td></td>
-            <td><h5>Licenciada en Ciencias Fiscales mención Finanzas </h5></td>
+            <td><h5>{{miPorfolio.education.title}}</h5></td>
         </tr>
         <tr>
             <td></td>
-            <td><p>Alta capacidad para la elaboración y manejo de planificaciones, control y ejecución de presupuesto, compras, tesorería y contabilidad. Habilidad para liderar, planificar y dirigir grupos de trabajo facilitando el logro de objetivos y metas de una empresa. Facilidad para el aprendizaje y el manejo de programas de gestión. Alto sentido de la organización. Emprendedora y creativa a la hora de buscar soluciones que aceleren el logro de objetivos.</p></td>
+            <td><p>{{miPorfolio.education.description}}</p></td>
         </tr>
         <tr>
-            <td><a href="https://drive.google.com/file/d/1G5m2HCN2UnNZWBWW9PIiJl_67KCEKr09/view?usp=sharing"><b>Título</b></a></td>
+            <td><a [href]="miPorfolio.education.certificate"><b>Título</b></a></td>
         </tr>
     </table>
 </div>
