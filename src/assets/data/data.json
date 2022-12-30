@@ -31,7 +31,7 @@
     {
         "position" : "Tester QA",
         "company" : "Ecosistemas",
-        "img" : "https://media-exp1.licdn.com/dms/image/C4E0BAQHAL3e-1if_dA/company-logo_100_100/0/1654719102934?e=1669852800&v=beta&t=zlXQDb2JMxBY6183im8b0ppZABMBS2Yo0zeofC_LgWc",
+        "img" : "assets/img/ecosistemas.png",
         "cliente": "Banco Hipotecario",
         "aplicaciones_testeadas" : "BPM, CRM, Homebanking, Contenedor Digital y Chatbot BH",
         "herramientas_de_consulta_de_base_de_datos" : "Management Studio, Oracle, Razor",
@@ -48,49 +48,47 @@
     },
     "certifications":[{
         "school": "Argentina Programa",
-        "img":"https://media-exp1.licdn.com/dms/image/C560BAQGv-Dd7A2pQ0g/company-logo_200_200/0/1646458288684?e=1669852800&v=beta&t=ibzElrv6wmx7Y6X4T4V6Wn4bHk8GzwjscrQ8EM2NfWM",
+        "img":"assets/img/ArgentinaP.png",
         "title":"Programación Básica",
         "expedition":"June 2022",
         "certificate": "https://drive.google.com/file/d/1gK_NeBkOBUs5rpHNBFgc8JbsoxRq7IRd/view"
     },
     {
         "school": "Agencia de aprendisaje a los largo de la vida",
-        "img":"https://media-exp1.licdn.com/dms/image/C4D0BAQE085qupw4Z-w/company-logo_200_200/0/1606791349939?e=1669852800&v=beta&t=BhC_jhj5V5vQVDVQAF-Fy1w6pUMD8mSQjFRPt9OqxHA",
+        "img":"assets/img/codo.png",
         "title": "Testing QA Calidad del Software",
         "expedition":"Dec 2021",
         "certificate": "https://drive.google.com/file/d/12gy8juHJQqHNZIpaI1gHFPOeBhnMrmDd/view"
     },
     {
         "school":"Fundación Telefónica",
-        "img":"https://media-exp1.licdn.com/dms/image/C4D0BAQH2bbG2o4qkpA/company-logo_200_200/0/1622204276344?e=1669852800&v=beta&t=9yjpxfyjPtEPdoB9FLkd8bwpRZ4hJ8Fxzjt_aRYdsDY",
-        "title":"Introducción a la Programación",
+        "img":"assets/img/Fundacion.png",
         "expedition":"Sep 2021",
         "certificate": "https://drive.google.com/file/d/1N6LfCB8xmNwVIJCMu6Ayu1S-pMfZKX5R/view"
     },
     {
         "school": "Udemy",
-        "img":"https://media-exp1.licdn.com/dms/image/C4D0BAQFQr9e68bBOPQ/company-logo_200_200/0/1626275253364?e=1669852800&v=beta&t=SMRTUaBjaaWArx0nJXvI9W8DnKAabgcmNpOxdDhWBGg",
-        "title":"Master SQL Server",
+        "img":"assets/img/Udemy.png",
         "expedition":"Agus 2021",
         "certificate": "https://www.udemy.com/certificate/UC-41146eee-361f-43aa-b2a9-ee15db788904/"
     },
     {
         "school": "Udemy",
-        "img":"https://media-exp1.licdn.com/dms/image/C4D0BAQFQr9e68bBOPQ/company-logo_200_200/0/1626275253364?e=1669852800&v=beta&t=SMRTUaBjaaWArx0nJXvI9W8DnKAabgcmNpOxdDhWBGg",
+        "img":"assets/img/Udemy.png",
         "title":"Scrum Master",
         "expedition":"July 2021",
         "certificate": "https://www.udemy.com/certificate/UC-0b7306fb-552b-49ef-9bb7-b7082275bc87/"
     },
     {
         "school": "Udemy",
-        "img":"https://media-exp1.licdn.com/dms/image/C4D0BAQFQr9e68bBOPQ/company-logo_200_200/0/1626275253364?e=1669852800&v=beta&t=SMRTUaBjaaWArx0nJXvI9W8DnKAabgcmNpOxdDhWBGg",
+        "img":"assets/img/Udemy.png",
         "title":"Consultor SAP modulo MM",
         "expedition":"Sept 2020",
         "certificate":"https://drive.google.com/file/d/151dO4sTSkJclPE7rhLu2T8bXGqd4N54y/view"
     },
     {
         "school": "Consejo Profesional de Ciencias Informáticas",
-        "img":"https://media-exp1.licdn.com/dms/image/C4D0BAQGLSvaRkYAfww/company-logo_100_100/0/1519914462142?e=1669852800&v=beta&t=znjayXijmgDHmJ5GYMUFj_V44_X7celmQGxbunylJyA",
+        "img":"assets/img/Consejo.png",
         "title":"Introducción al Sistema SAP",
         "expedition":"May 2019",
         "certificate": "https://drive.google.com/file/d/1yZJOlhb0j9oERnwiWElVrNfLFePWuI3K/view"
