@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class IniciarSesionComponent implements OnInit {
   
-  constructor() { }
+  constructor(private formBuilder:FormBuilder) { }
    
    
 
