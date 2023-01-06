@@ -10,6 +10,10 @@ import { EducacionComponent } from './componentes/educacion/educacion.component'
 import { CertificacionesComponent } from './componentes/certificaciones/certificaciones.component';
 import { PorfolioService } from './servicios/porfolio.service';
 import { HttpClientModule} from'@angular/common/http';
+import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-sesion.component';
+import { PorfolioComponent } from './componentes/porfolio/porfolio.component';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,12 +22,17 @@ import { HttpClientModule} from'@angular/common/http';
     AcercaDeComponent,
     ExperienciaComponent,
     EducacionComponent,
-    CertificacionesComponent
+    CertificacionesComponent,
+    IniciarSesionComponent,
+    PorfolioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

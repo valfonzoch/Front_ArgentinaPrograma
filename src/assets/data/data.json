@@ -26,18 +26,18 @@
         "consultas" : "Management Studio",
         "reporte":"Azure",
         "Metodologia": "Agil: Scrum y Kanba",
-        "funciones" : "Analisis de documentacion,definicion, diseño, gestion y ejecusion de casos de prueba, deteccion, reporte, relevamiento y seguimiento de defectos y elaboracion de informe de avance"
+        "funciones" : "Analisis de documentacion,definicion, diseño, gestion y ejecución de casos de prueba, deteccion, reporte, relevamiento y seguimiento de defectos y elaboracion de informe de avance"
     },
     {
         "position" : "Tester QA",
         "company" : "Ecosistemas",
-        "img" : "assets/img/ecosistemas.png",
+        "img" : "assets/img/ecosistemas.jpg",
         "cliente": "Banco Hipotecario",
         "aplicaciones" : "BPM, CRM, Homebanking, Contenedor Digital y Chatbot BH",
         "consultas" : "Management Studio, Oracle, Razor",
         "reporte":"Jira",
         "Metodologia": "Agil: Scrum y Kanba",
-        "funciones" : "Analisis de documentacion,definicion, diseño, gestion y ejecusion de casos de prueba, deteccion, reporte, relevamiento y seguimiento de defectos y elaboracion de informe de avance"
+        "funciones" : "Analisis de documentacion,definicion, diseño, gestion y ejecución de casos de prueba, deteccion, reporte, relevamiento y seguimiento de defectos y elaboracion de informe de avance"
     }],
     "education":{
         "college": "Escuela Nacional de Administracion y Hacienda Publica. IUT",
@@ -63,12 +63,14 @@
     {
         "school":"Fundación Telefónica",
         "img":"assets/img/Fundacion.png",
+        "title":"Introduccion a la Programacion",
         "expedition":"Sep 2021",
         "certificate": "https://drive.google.com/file/d/1N6LfCB8xmNwVIJCMu6Ayu1S-pMfZKX5R/view"
     },
     {
         "school": "Udemy",
         "img":"assets/img/Udemy.png",
+        "title":"Master en SQL Server",
         "expedition":"Agus 2021",
         "certificate": "https://www.udemy.com/certificate/UC-41146eee-361f-43aa-b2a9-ee15db788904/"
     },
