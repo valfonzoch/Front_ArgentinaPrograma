@@ -7,7 +7,6 @@ const routes: Routes = [
   {path:'porfolio', component:PorfolioComponent},
   {path:'iniciar-sesion', component:IniciarSesionComponent},
   {path:'',redirectTo:'iniciar-sesion',pathMatch:'full'}
-
 ];
 
 @NgModule({

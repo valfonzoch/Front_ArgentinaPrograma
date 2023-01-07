@@ -18,6 +18,7 @@ IniciarSesion(credenciles:any):Observable<any>
 {
 return this.http.post(this.url, credenciles).pipe(map(data=>{
   sessionStorage.setItem('currentUser', JSON.stringify(data));
+  this.currentUserSubject.next(data);
   return data;
 }))
 }
