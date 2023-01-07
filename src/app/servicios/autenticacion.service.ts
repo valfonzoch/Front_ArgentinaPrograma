@@ -22,6 +22,8 @@ return this.http.post(this.url, credenciles).pipe(map(data=>{
 }))
 }
 
-
-
+get UsuarioAutenticado ()
+{
+return this.currentUserSubject.value;
+}
 }
