@@ -38,7 +38,7 @@
         "description": "Alta capacidad para la elaboración y manejo de planificaciones, control y ejecución de presupuesto, compras, tesorería y contabilidad. Habilidad para liderar, planificar y dirigir grupos de trabajo facilitando el logro de objetivos y metas de una empresa. Facilidad para el aprendizaje y el manejo de programas de gestión. Alto sentido de la organización. Emprendedora y creativa a la hora de buscar soluciones que aceleren el logro de objetivos.",
         "certificate":"https://drive.google.com/file/d/1G5m2HCN2UnNZWBWW9PIiJl_67KCEKr09/view?usp=sharing"
     }],
-    "certifications":[{
+    "listCertificaciones":[{
         "school": "Argentina Programa",
         "img":"assets/img/ArgentinaP.png",
         "title":"Programación Básica",

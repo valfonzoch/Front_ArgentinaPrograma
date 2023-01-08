@@ -1,20 +1,20 @@
 <div class="card mat-card" id="educacion">
     <h1>Educación</h1>
-    <table>
+    <table *ngFor="let educacion of listEducacion">
         <tr>
-            <th><img  class="school-image" width="150px"  [src]="miPorfolio.education.img" ></th>
-            <th><h3>{{miPorfolio.education.college}}</h3></th>
+            <th><img  class="school-image" width="150px"  [src]="educacion.img" ></th>
+            <th><h3>{{educacion.college}}</h3></th>
         </tr>
         <tr>
             <td></td>
-            <td><h5>{{miPorfolio.education.title}}</h5></td>
+            <td><h5>{{educacion.title}}</h5></td>
         </tr>
         <tr>
             <td></td>
-            <td><p>{{miPorfolio.education.description}}</p></td>
+            <td><p>{{educacion.description}}</p></td>
         </tr>
         <tr>
-            <td><a [href]="miPorfolio.education.certificate"><b>Título</b></a></td>
+            <td><a [href]="educacion.certificate"><b>Título</b></a></td>
         </tr>
     </table>
 </div>
