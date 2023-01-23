@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 
 @Component({
@@ -7,15 +8,36 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
   styleUrls: ['./educacion.component.css']
 })
 export class EducacionComponent implements OnInit {
-  listEducacion: any;
+  datos: any;
+  form: FormGroup;
+  
+  constructor(private datosPorfolio:PorfolioService, private formbuilder:FormBuilder) {
 
-  constructor(private datosPorfolio:PorfolioService) { }
+    this.form = this.formbuilder.group({
+
+      id:["",Validators.required],
+      college:["", Validators.required],
+      title:["", Validators.required],
+      img:["", Validators.required],
+      description: ["", Validators.required],
+      certificate:["", Validators.required],
+
+   })
+
+   }
 
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
       console.log(data);
-      this.listEducacion=data.listEducacion;
+      this.datos=data;
     });
   }
 
+  newEducacion(event:Event, PersonaId:any):void  {
+    event.preventDefault;
+    this.datosPorfolio.agregarEducacion(this.form.value, PersonaId).subscribe(data =>{
+      console.log(data);
+      
+    })
+  }
 }

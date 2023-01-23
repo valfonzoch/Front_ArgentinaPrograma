@@ -18,4 +18,24 @@ export class AcercaDeComponent implements OnInit {
     });
   }
 
+cambiar_parrafo(text:any){
+
+};
+
 }
+
+/*<script>
+    function cambiar_parrafo(){
+        document.getElementById("edit-acercade").style.display="block";
+        let texto = document.getElementById("text-acercade").innerText;
+        alert("Modificaste tus datos");
+        console.log(texto);
+
+    };
+
+    function myFuntion2 (valor){
+        document.getElementById("text-acercade").innerText= valor;
+    };
+</script>*/
+    
+   

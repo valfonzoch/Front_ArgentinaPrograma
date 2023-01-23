@@ -1,3 +1,6 @@
+
+
+
 <div class="card mat-card">
     <div class="card-titles" id="acerca">
         <h1 >{{miPorfolio.title1}}</h1>
@@ -15,3 +18,17 @@
     
     </div>
 </div>
+
+<script>
+    function cambiar_parrafo(){
+        document.getElementById("edit-acercade").style.display="block";
+        let texto = document.getElementById("text-acercade").innerText;
+        alert("Modificaste tus datos");
+        console.log(texto);
+
+    };
+
+    function myFuntion2 (valor){
+        document.getElementById("text-acercade").innerText= valor;
+    };
+</script>

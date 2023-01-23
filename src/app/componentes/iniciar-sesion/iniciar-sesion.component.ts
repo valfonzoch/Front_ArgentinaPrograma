@@ -39,3 +39,4 @@ export class IniciarSesionComponent implements OnInit {
       })
   }
 }
+ /*http://localhost:8080/ver/persona/4*/

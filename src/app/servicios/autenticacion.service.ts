@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AutenticacionService {
-  url = 'localhost:8080/ver/personas';
+  url = 'http://localhost:8080/ver/persona/4'; //aqui ella pone un endponint para login, ese no lo hice
   currentUserSubject: BehaviorSubject<any>;
   constructor(private http:HttpClient) { 
     console.log("El servicio de autenticación está corriendo");

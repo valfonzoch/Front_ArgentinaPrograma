@@ -81,7 +81,7 @@ div#info-contac span a {
 /*div es la eiqueta donde se encuentra, el # se refiere al id, luego viene el nombre*/
 div#info-actions {
     display: flex;
-}
+}                                         /* Tengo que empezar a separar los ccs para poder cambiar de lado el boton crear*/
 
 div#info-actions button {
     margin-right: 8px;
@@ -140,4 +140,8 @@ ul.items-list li div.data-container a {
  }
  div#certificaciones h1 {
     text-align: center;
+ }
+ 
+ div#info-actions button  {
+
  }
