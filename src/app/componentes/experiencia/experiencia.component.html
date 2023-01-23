@@ -1,8 +1,8 @@
 <div class="card mat-card" id="experiencia">
 <!-- Button crear -->   
     <div>
-        <button type="button" class= "btn btn-outline-danger" data-toggle="modal" data-target="#crear">  
-          +
+        <button type="button" class= "btn btn-outline-primary" data-toggle="modal" data-target="#crear">  
+          <img src="assets/img/file-plus-2.svg" alt="">
         </button>     
       </div>
 <h1>Experiencia</h1>
@@ -82,6 +82,89 @@
           </div>
         </div>
     <table *ngFor="let experiencia of datos.listExperiencia">
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+       <!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="editExp">
+<img src="assets/img/edit-2.svg" alt="">
+</button>
+<!-- Modal para Agregar -->
+<div class="modal fade" id="editExp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nueva Experiencia</h5>
+<!-- Button cerrar -->     
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="form" (ngSubmit)="newExperiencia($event,datos.id)">
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Posición</label>
+                <div class="col-sm-10">
+                  <input type="text" formControlName="position"class="form-control" id="inputPassword" placeholder="Text"> <!--aqui es donde van los nombres de las variables que tengo en el json-->
+                </div>
+              </div>
+              <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">Compañia</label>
+                  <div class="col-sm-10">
+                    <input type="text" formControlName="company" class="form-control" id="inputPassword" placeholder="Text">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">Logo</label>
+                  <div class="col-sm-10">
+                    <input type="text" formControlName="img" class="form-control" id="inputPassword" placeholder="Text">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">Cliente</label>
+                  <div class="col-sm-10">
+                    <input type="text" formControlName="cliente" class="form-control" id="inputPassword" placeholder="Text">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">Aplicaciones</label>
+                  <div class="col-sm-10">
+                    <input type="text" formControlName="aplicaciones" class="form-control" id="inputPassword" placeholder="Text">
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Consultas</label>
+                    <div class="col-sm-10">
+                      <input type="text" formControlName="consultas" class="form-control" id="inputPassword" placeholder="Text">
+                    </div>
+                </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Reporte</label>
+                        <div class="col-sm-10">
+                          <input type="text" formControlName="reporte" class="form-control" id="inputPassword" placeholder="Text">
+                        </div>
+                    </div>
+                        <div class="form-group row">
+                            <label for="inputPassword" class="col-sm-2 col-form-label">Funciones</label>
+                            <div class="col-sm-10">
+                              <input type="text" formControlName="funciones" class="form-control" id="inputPassword" placeholder="Text">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPassword" class="col-sm-2 col-form-label">Metodología</label>
+                            <div class="col-sm-10">
+                                 <input type="text" formControlName="metodologia" class="form-control" id="inputPassword" placeholder="Text">
+                            </div>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Guardar</button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </td>
+        </tr>
         <tr>
             <th>
                 <img  width="50px" [src]="experiencia.img" > 
@@ -104,82 +187,6 @@
                 </ul>
             </td>
         </tr>
-         <!-- Button trigger modal -->
- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Editar
-  </button>
-  <!-- Modal para Agregar -->
-  <div class="modal fade" id="crear" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Nueva Experiencia</h5>
-<!-- Button cerrar -->     
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <form [formGroup]="form" (ngSubmit)="newExperiencia($event,datos.id)">
-                <div class="form-group row">
-                  <label for="inputPassword" class="col-sm-2 col-form-label">Posición</label>
-                  <div class="col-sm-10">
-                    <input type="text" formControlName="position"class="form-control" id="inputPassword" placeholder="Text"> <!--aqui es donde van los nombres de las variables que tengo en el json-->
-                  </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Compañia</label>
-                    <div class="col-sm-10">
-                      <input type="text" formControlName="company" class="form-control" id="inputPassword" placeholder="Text">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Logo</label>
-                    <div class="col-sm-10">
-                      <input type="text" formControlName="img" class="form-control" id="inputPassword" placeholder="Text">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Cliente</label>
-                    <div class="col-sm-10">
-                      <input type="text" formControlName="cliente" class="form-control" id="inputPassword" placeholder="Text">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Aplicaciones</label>
-                    <div class="col-sm-10">
-                      <input type="text" formControlName="aplicaciones" class="form-control" id="inputPassword" placeholder="Text">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                      <label for="inputPassword" class="col-sm-2 col-form-label">Consultas</label>
-                      <div class="col-sm-10">
-                        <input type="text" formControlName="consultas" class="form-control" id="inputPassword" placeholder="Text">
-                      </div>
-                  </div>
-                      <div class="form-group row">
-                          <label for="inputPassword" class="col-sm-2 col-form-label">Reporte</label>
-                          <div class="col-sm-10">
-                            <input type="text" formControlName="reporte" class="form-control" id="inputPassword" placeholder="Text">
-                          </div>
-                      </div>
-                          <div class="form-group row">
-                              <label for="inputPassword" class="col-sm-2 col-form-label">Funciones</label>
-                              <div class="col-sm-10">
-                                <input type="text" formControlName="funciones" class="form-control" id="inputPassword" placeholder="Text">
-                              </div>
-                          </div>
-                          <div class="form-group row">
-                              <label for="inputPassword" class="col-sm-2 col-form-label">Metodología</label>
-                              <div class="col-sm-10">
-                                   <input type="text" formControlName="metodologia" class="form-control" id="inputPassword" placeholder="Text">
-                              </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
     </table> 
     </div>
