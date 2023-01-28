@@ -1,0 +1,15 @@
+/*logos de arriba del encabezado*/
+div#logo1{
+    margin: -30px;
+}
+/*Logo de Argentina Programa*/
+img#Arg{
+    margin-left: 20px;
+}
+/*logo de linkedin y botton de login*/
+div#logoDerecha {
+    float: right;           /* el float alinea a la derecha o a la izquierda*/
+    margin-right: 60px;
+    margin-top: 50px
+    /*margin-left: 50px;*/
+}
