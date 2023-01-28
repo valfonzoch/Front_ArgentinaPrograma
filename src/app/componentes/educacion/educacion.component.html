@@ -1,17 +1,51 @@
 
 <div class="card mat-card" id="educacion">
-<!-- Button trigger modal -->
+
+<!-- Button crear -->
 <div>
   <button type="button" class= "btn btn-outline-primary" data-toggle="modal" data-target="#crearEdu">  
     <img src="assets/img/file-plus-2.svg" alt="">
     </button> 
   </div>
-      
-  
+
     <h1>Educación</h1>
+
  <div>
-  <!-- Modal para Agregar -->
-  <div class="modal fade" id="crearEdu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <table *ngFor="let educacion of datos.listEducacion">
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+ <!-- Button trigger modal -->                
+            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#editEdu" 
+            (click)="verEducacion(educacion.id)">
+             <img src="assets/img/edit-2.svg" alt="">
+             </button>
+             <button type="button" class="btn btn-outline-danger" (click)="borrarEducacion(educacion?.id)">
+              <img src="assets/img/basura.svg" alt=""></button>      
+        </td>
+      </tr>
+        <tr>
+            <th><img  class="school-image" width="150px"  [src]="educacion.img" ></th>
+            <th><h3>{{educacion.college}}</h3></th>
+        </tr>
+        <tr>
+            <td></td>
+            <td><h5>{{educacion.title}}</h5></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><p>{{educacion.description}}</p></td>
+        </tr>
+        <tr>
+            <td><a [href]="educacion.certificate"><b>Título</b></a></td>          
+        </tr>
+    </table>
+</div>
+
+
+ <!-- Modal para Agregar -->
+<div class="modal fade" id="crearEdu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -61,55 +95,47 @@
     </div>
   </div>
 
-    <table *ngFor="let educacion of datos.listEducacion">
-      <tr>
-        <td></td>
-        <td></td>
-        <td>
- <!-- Button trigger modal -->                
-            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="editEdu">
-             <img src="assets/img/edit-2.svg" alt="">
-             </button>          
-      <!-- Modal -->
-      <div class="modal fade" id="editEdu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <!-- Modal para Editar-->
+  <div class="modal fade" id="editEdu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal editar</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Editar Eduacion</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form [formGroup]="form" (ngSubmit)="editarEducacion()">
+                  <input type="hidden" class="form-control" formControlName="id" value={{eduEdit?.id}}>
                     <div class="form-group row">
                       <label for="inputPassword" class="col-sm-2 col-form-label">Colegio</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputPassword" placeholder="Text">
+                        <input type="text" value= {{eduEdit?.college}} formControlName= "college" class="form-control">
                       </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">Titulo</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputPassword" placeholder="Text">
+                          <input type="text" value= {{eduEdit?.title}} formControlName= "title"  class="form-control">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">Logo</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputPassword" placeholder="Text">
+                          <input type="text" value= {{eduEdit?.img}} formControlName= "img" class="form-control">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">descripcion</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputPassword" placeholder="Text">
+                          <input type="text" value= {{eduEdit?.description}} formControlName= "description" class="form-control" >
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">Certificado</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputPassword" placeholder="Text">
+                          <input type="text" value= {{eduEdit?.certificate}} formControlName= "certificate" class="form-control" >
                         </div>
                       </div>
                       <button type="submit" class="btn btn-primary">Guardar</button>
@@ -118,22 +144,3 @@
           </div>
         </div>
       </div>
-        </td>
-      </tr>
-        <tr>
-            <th><img  class="school-image" width="150px"  [src]="educacion.img" ></th>
-            <th><h3>{{educacion.college}}</h3></th>
-        </tr>
-        <tr>
-            <td></td>
-            <td><h5>{{educacion.title}}</h5></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><p>{{educacion.description}}</p></td>
-        </tr>
-        <tr>
-            <td><a [href]="educacion.certificate"><b>Título</b></a></td>          
-        </tr>
-    </table>
-</div>

@@ -10,18 +10,20 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
 export class ExperienciaComponent implements OnInit {
   datos: any;
   form: FormGroup;
+  expEdit:any;
 
   constructor(private datosPorfolio:PorfolioService, private formbuilder: FormBuilder) { 
      
     this.form = this.formbuilder.group({
 
+      id:["",Validators.required], 
       position:["",Validators.required],
       company:["", Validators.required],
       img:["", Validators.required],  
       cliente:["", Validators.required],
       aplicaciones:["", Validators.required],
       consultas: ["", Validators.required],
-      reportes:["", Validators.required],
+      reporte:["", Validators.required],
       funciones:["", Validators.required],
       metodologia:["", Validators.required],
     })
@@ -37,4 +39,37 @@ export class ExperienciaComponent implements OnInit {
       console.log(data);
     })
   }
+
+  verExperiencia(expEdit: any): void {
+    
+    this.datosPorfolio.verExperiencia(expEdit).subscribe(data => {
+
+      this.form.patchValue({
+
+        id: data.id,
+        position:data.position,
+        company:data.company,
+        img: data.img,  
+        cliente:data.cliente,
+        aplicaciones:data.aplicaciones,
+        consultas:data.consultas,
+        reporte:data.reporte,
+        funciones:data.funciones,
+        metodologia:data.metodologia,
+      })
+      this.expEdit=data;
+      console.log(data);
+    });
+  }
+    
+  editarExperiencia(): void{
+    this.datosPorfolio.editarExperiencia(this.form.value).subscribe(data => {
+      console.log(data);
+      this.expEdit=data;
+  })
+}
+borrarExperiencia(id:any) {
+  this.datosPorfolio.borrarExperiencia(id).subscribe(data => {
+  })
+}
 }

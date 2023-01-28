@@ -10,6 +10,7 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
 export class EducacionComponent implements OnInit {
   datos: any;
   form: FormGroup;
+  eduEdit:any;
   
   constructor(private datosPorfolio:PorfolioService, private formbuilder:FormBuilder) {
 
@@ -40,4 +41,31 @@ export class EducacionComponent implements OnInit {
       
     })
   }
+
+  verEducacion(eduEdit:any): void {
+
+    this.datosPorfolio.verEducacion(eduEdit).subscribe(data => {
+      this.form.patchValue({
+        id: data.id,
+        college:data.college,
+        title:data.title,
+        img:data.img,
+        description: data.description,
+        certificate:data.certificate,
+      })
+      this.eduEdit=data;
+      console.log(data);
+    });
+  }
+
+  editarEducacion():void {
+    this.datosPorfolio.editarEducacion(this.form.value).subscribe(data => {
+      console.log(data);
+      this.eduEdit=data;
+    })
+  }
+  borrarEducacion(id:any) {
+    this.datosPorfolio.borrarEducacion(id).subscribe(data => {
+  })
+}
 }

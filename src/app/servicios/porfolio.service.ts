@@ -10,17 +10,54 @@ export class PorfolioService {
   constructor(private http:HttpClient) { 
     this.url = 'http://localhost:8080/';
   }
-
+     /*Persona*/
   obtenerDatos (): Observable<any>{
     return this.http.get(this.url+'ver/persona/4');
   }
-
+    /*Educacion*/
   agregarEducacion(form:any, PersonaId:any): Observable<any>{
-    return this.http.post(this.url+'new/educacion/'+ PersonaId, form); // @PostMapping("new/educacion/{id}")
+    return this.http.post(this.url+'new/educacion/'+ PersonaId, form); 
   }
+  verEducacion(id:any): Observable<any>{
+    return this.http.get(this.url+'ver/educacion/'+ id);
+  }
+  editarEducacion(educacion:any): Observable<any>{
+    return this.http.put(this.url+'update/educacion', educacion);
+  }
+  borrarEducacion(id:any):Observable<any>{
+    return this.http.delete(this.url+'delete/educacion'+id);
+  }
+
+  /*Experiencia*/
 
   agregarExperiencia(form:any, expId:any): Observable<any>{
     return this.http.post(this.url+'new/experiencia/'+ expId, form); 
+  }
+  verExperiencia(id:any): Observable<any>{
+    return this.http.get(this.url+'ver/experiencia/'+ id);
+  }
+  editarExperiencia(experiencia: any): Observable<any>{
+    return this.http.put(this.url+'update/experiencia', experiencia);
+  }
+  borrarExperiencia(id:any): Observable<any>{
+    return this.http.delete(this.url+'delete/experiencia'+ id);
+  }
+
+  /*Certificados*/
+
+  agregarCertificado(form:any, cerId:any): Observable<any>{
+    return this.http.post(this.url+'new/certificaciones/'+ cerId, form); 
+  }
+  verCertificado(id:any): Observable<any>{
+    return this.http.get(this.url+'ver/certificaciones/'+ id);
+  }
+
+  editarCertificacion(certificacciones: any): Observable<any>{
+    return this.http.put(this.url+'update/certificaciones', certificacciones);
+  }
+  
+  borrarCertificacion(id: any): Observable<any>{
+    return this.http.delete(this.url+'delete/certificaciones', id);
   }
 }
 
