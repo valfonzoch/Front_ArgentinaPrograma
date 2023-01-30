@@ -68,8 +68,8 @@ export class ExperienciaComponent implements OnInit {
       this.expEdit=data;
   })
 }
-borrarExperiencia(id:any) {
-  this.datosPorfolio.borrarExperiencia(id).subscribe(data => {
+borrarExperiencia(id:any, persona:any) {
+  this.datosPorfolio.borrarExperiencia(id, persona).subscribe(data => {
   })
 }
 }

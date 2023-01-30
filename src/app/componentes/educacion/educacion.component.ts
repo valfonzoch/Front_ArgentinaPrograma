@@ -64,8 +64,8 @@ export class EducacionComponent implements OnInit {
       this.eduEdit=data;
     })
   }
-  borrarEducacion(id:any) {
+  /*borrarEducacion(id:any) {
     this.datosPorfolio.borrarEducacion(id).subscribe(data => {
   })
-}
+}*/
 }

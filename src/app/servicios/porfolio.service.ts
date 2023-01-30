@@ -14,6 +14,12 @@ export class PorfolioService {
   obtenerDatos (): Observable<any>{
     return this.http.get(this.url+'ver/persona/4');
   }
+  verPersona(id:any): Observable<any>{
+    return this.http.get(this.url+'ver/persona/'+id);
+  }
+  editarPersona(persona: any): Observable<any>{
+    return this.http.put(this.url+'update/persona',persona);
+  }
     /*Educacion*/
   agregarEducacion(form:any, PersonaId:any): Observable<any>{
     return this.http.post(this.url+'new/educacion/'+ PersonaId, form); 
@@ -24,9 +30,9 @@ export class PorfolioService {
   editarEducacion(educacion:any): Observable<any>{
     return this.http.put(this.url+'update/educacion', educacion);
   }
-  borrarEducacion(id:any):Observable<any>{
-    return this.http.delete(this.url+'delete/educacion'+id);
-  }
+  /*borrarEducacion(persona: any, id:any):Observable<any>{
+    return this.http.delete(this.url+'delete/educacion'+id, persona );
+  }*/
 
   /*Experiencia*/
 
@@ -39,8 +45,8 @@ export class PorfolioService {
   editarExperiencia(experiencia: any): Observable<any>{
     return this.http.put(this.url+'update/experiencia', experiencia);
   }
-  borrarExperiencia(id:any): Observable<any>{
-    return this.http.delete(this.url+'delete/experiencia'+ id);
+  borrarExperiencia(id:any, persona:any): Observable<any>{
+    return this.http.delete(this.url+'delete/experiencia/'+ id +"/"+ persona);
   }
 
   /*Certificados*/
