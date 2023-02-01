@@ -11,6 +11,7 @@ export class EducacionComponent implements OnInit {
   datos: any;
   form: FormGroup;
   eduEdit:any;
+  idModal: any;
   
   constructor(private datosPorfolio:PorfolioService, private formbuilder:FormBuilder) {
 
@@ -34,12 +35,18 @@ export class EducacionComponent implements OnInit {
     });
   }
 
+  modalClose(event: Event): void{
+   /*no me sale*/
+    
+  }
+
   newEducacion(event:Event, PersonaId:any):void  {
     event.preventDefault;
     this.datosPorfolio.agregarEducacion(this.form.value, PersonaId).subscribe(data =>{
       console.log(data);
       
     })
+   
   }
 
   verEducacion(eduEdit:any): void {
@@ -64,8 +71,9 @@ export class EducacionComponent implements OnInit {
       this.eduEdit=data;
     })
   }
-  /*borrarEducacion(id:any) {
-    this.datosPorfolio.borrarEducacion(id).subscribe(data => {
+  borrarEducacion(id:any, persona: any) {
+    this.datosPorfolio.borrarEducacion(id, persona).subscribe(data => {
   })
-}*/
+  
+}
 }

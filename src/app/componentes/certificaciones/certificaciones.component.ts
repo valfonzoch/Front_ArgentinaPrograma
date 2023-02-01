@@ -59,8 +59,8 @@ editarCertificacion(): void{
   
   })
 }
-borrarCertificacion(id: any){
-  this.datosPorfolio.borrarCertificacion(id).subscribe(data =>{
+borrarCertificacion(id: any, persona:any){
+  this.datosPorfolio.borrarCertificacion(id, persona).subscribe(data =>{
   })
 }
 }

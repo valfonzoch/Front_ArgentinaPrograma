@@ -30,9 +30,9 @@ export class PorfolioService {
   editarEducacion(educacion:any): Observable<any>{
     return this.http.put(this.url+'update/educacion', educacion);
   }
-  /*borrarEducacion(persona: any, id:any):Observable<any>{
-    return this.http.delete(this.url+'delete/educacion'+id, persona );
-  }*/
+  borrarEducacion(id:any, persona: any ):Observable<any>{
+    return this.http.delete(this.url+'delete/educacion/'+id+'/'+ persona );
+  }
 
   /*Experiencia*/
 
@@ -62,8 +62,8 @@ export class PorfolioService {
     return this.http.put(this.url+'update/certificaciones', certificacciones);
   }
   
-  borrarCertificacion(id: any): Observable<any>{
-    return this.http.delete(this.url+'delete/certificaciones', id);
+  borrarCertificacion(id: any, persona: any): Observable<any>{
+    return this.http.delete(this.url+'delete/certificaciones/'+ id +"/"+ persona);
   }
 }
 

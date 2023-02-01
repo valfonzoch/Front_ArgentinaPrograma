@@ -21,7 +21,7 @@
             (click)="verEducacion(educacion.id)">
              <img src="assets/img/edit-2.svg" alt="">
              </button>
-             <button type="button" class="btn btn-outline-danger" >
+             <button type="button" class="btn btn-outline-danger" (click)="borrarEducacion(educacion.id, datos.id)" data-dismiss="modal">
               <img src="assets/img/basura.svg" alt=""></button>      
         </td>
       </tr>
