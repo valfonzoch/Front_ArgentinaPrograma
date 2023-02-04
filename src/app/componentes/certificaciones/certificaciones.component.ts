@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class CertificacionesComponent implements OnInit {
   form:FormGroup;
   cerEdit: any;
 
-  constructor(private datosPorfolio:PorfolioService, private formBuilder: FormBuilder) { 
+  constructor(private datosPorfolio:PorfolioService, private formBuilder: FormBuilder,private autenticado: AutenticacionService) { 
 
     this.form = this.formBuilder.group({
 
@@ -63,4 +64,7 @@ borrarCertificacion(id: any, persona:any){
   this.datosPorfolio.borrarCertificacion(id, persona).subscribe(data =>{
   })
 }
+logueado(){
+  return this.autenticado.logged;
+ } 
 }

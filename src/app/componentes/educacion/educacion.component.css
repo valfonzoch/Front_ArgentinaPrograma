@@ -1,0 +1,10 @@
+/* centra la palabra Educacion*/
+div#educacion h1 {
+    text-align: center;
+ }
+
+ /* Para alinear los botones a la derecha*/
+ div#botones {
+    display: flex;
+   
+ }

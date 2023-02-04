@@ -2,29 +2,47 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { Credenciales } from '../componentes/iniciar-sesion/iniciar-sesion.component';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutenticacionService {
-  url = 'http://localhost:8080/ver/persona/4'; //aqui ella pone un endponint para login, ese no lo hice
-  currentUserSubject: BehaviorSubject<any>;
-  constructor(private http:HttpClient) { 
+  url = 'http://localhost:8080'; 
+  login: any;
+  
+  constructor(private http:HttpClient, private ruta:Router) { 
+    this.login = false;
     console.log("El servicio de autenticación está corriendo");
-    this.currentUserSubject= new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser')||'{}'));
   }
 
-IniciarSesion(credenciles:any):Observable<any> 
-{
-return this.http.post(this.url, credenciles).pipe(map(data=>{
-  sessionStorage.setItem('currentUser', JSON.stringify(data));
-  this.currentUserSubject.next(data);
-  return data;
-}))
-}
+  ObtenerDatos(): Observable<any>{
+    return  this.http.get(this.url + "/ver/persona/4");
+  }
 
-get UsuarioAutenticado ()
-{
-return this.currentUserSubject.value;
-}
+ IniciarSesion(password: any, email: any):Observable<any>{
+    let credenciales = new Credenciales();
+    credenciales.password = password;
+    credenciales.email = email;
+    return this.http.post(this.url + "/login", credenciales).pipe(map(data => {
+      this.login = data;
+      if (this.login == true){
+        console.log("entro al true");
+        this.ruta.navigate(['/porfolio']);
+      } else if (this.login == false){
+        console.log (this.login);
+        console.log("entro al false");
+        this.ruta.navigate(['/iniciar-sesion']);  
+        alert("Alguno de los datos son incorrectos");    
+      }
+    }));
+
+  }
+
+  logged(){
+    return this.login == true; 
+  }
 }

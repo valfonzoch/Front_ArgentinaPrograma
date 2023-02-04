@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class ExperienciaComponent implements OnInit {
   form: FormGroup;
   expEdit:any;
 
-  constructor(private datosPorfolio:PorfolioService, private formbuilder: FormBuilder) { 
+  constructor(private datosPorfolio:PorfolioService, private formbuilder: FormBuilder,private autenticado: AutenticacionService) { 
      
     this.form = this.formbuilder.group({
 
@@ -72,4 +73,8 @@ borrarExperiencia(id:any, persona:any) {
   this.datosPorfolio.borrarExperiencia(id, persona).subscribe(data => {
   })
 }
+
+logueado(){
+  return this.autenticado.logged;
+ } 
 }

@@ -2,7 +2,7 @@
 
 <!-- Button crear -->   
     <div>
-        <button type="button" class= "btn btn-outline-primary" data-toggle="modal" data-target="#crear">  
+        <button *ngIf="logueado()" type="button" class= "btn btn-outline-primary" data-toggle="modal" data-target="#crear">  
           <img src="assets/img/file-plus-2.svg" alt="">
         </button>     
       </div>
@@ -15,11 +15,11 @@
         <td></td>
         <td>
           <!-- Button para ver -->
-          <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#editExp"
+          <button *ngIf="logueado()" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#editExp"
           (click)="verExperiencia(experiencia.id)">
             <img src="assets/img/edit-2.svg" alt="">
           </button>
-          <button type="button" class="btn btn-outline-danger" (click)="borrarExperiencia(experiencia.id, datos.id)">
+          <button *ngIf="logueado()" type="button" class="btn btn-outline-danger" (click)="borrarExperiencia(experiencia.id, datos.id)">
           <img src="assets/img/basura.svg" alt=""></button>
         </td>
       </tr>
@@ -120,20 +120,21 @@
                 </div>
               </div>
               <!-- Button guardar -->
-              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+              <button type="submit" class="btn btn-primay" data-bs-dismiss="modal" Style="margin: 1%;">Grabar</button>
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
             </form>
           </div>
         </div>
       </div>
     </div>
-
+    
     <!-- Modal para Editar -->
     <div class="modal fade" id="editExp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Editar Experiencia</h5>
-             <!--Button cerrar  -->
+            <!--Button cerrar  -->
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -168,8 +169,7 @@
               <div class="form-group row">
                 <label for="inputPassword" class="col-sm-2 col-form-label">Aplicaciones</label>
                 <div class="col-sm-10">
-                  <input type="text" value="expEdit?.aplicaciones" formControlName="aplicaciones"
-                    class="form-control" />
+                  <input type="text" value="expEdit?.aplicaciones" formControlName="aplicaciones" class="form-control" />
                 </div>
               </div>
               <div class="form-group row">
@@ -196,7 +196,8 @@
                   <input type="text" value="expEdit?.metologia" formControlName="metodologia" class="form-control" />
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary">Guardar</button>
+              <button type="submit" class="btn btn-primay" data-bs-dismiss="modal" Style="margin: 1%;">Grabar</button>
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
             </form>
           </div>
         </div>

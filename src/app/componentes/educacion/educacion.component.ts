@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable, window } from 'rxjs';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
+import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
+
 
 @Component({
   selector: 'app-educacion',
@@ -11,9 +14,9 @@ export class EducacionComponent implements OnInit {
   datos: any;
   form: FormGroup;
   eduEdit:any;
-  idModal: any;
   
-  constructor(private datosPorfolio:PorfolioService, private formbuilder:FormBuilder) {
+  
+  constructor(private datosPorfolio:PorfolioService, private formbuilder:FormBuilder, private autenticado: AutenticacionService) {
 
     this.form = this.formbuilder.group({
 
@@ -35,10 +38,7 @@ export class EducacionComponent implements OnInit {
     });
   }
 
-  modalClose(event: Event): void{
-   /*no me sale*/
-    
-  }
+
 
   newEducacion(event:Event, PersonaId:any):void  {
     event.preventDefault;
@@ -46,7 +46,8 @@ export class EducacionComponent implements OnInit {
       console.log(data);
       
     })
-   
+  
+
   }
 
   verEducacion(eduEdit:any): void {
@@ -74,6 +75,9 @@ export class EducacionComponent implements OnInit {
   borrarEducacion(id:any, persona: any) {
     this.datosPorfolio.borrarEducacion(id, persona).subscribe(data => {
   })
-  
 }
+
+logueado(){
+  return this.autenticado.logged;
+ } 
 }

@@ -10,6 +10,7 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 })
 export class IniciarSesionComponent implements OnInit {
   form:FormGroup;
+  login: any;
   constructor(private formBuilder:FormBuilder, private autenticacionService:AutenticacionService, private ruta:Router) {
     this.form = this.formBuilder.group(
       {
@@ -32,11 +33,14 @@ export class IniciarSesionComponent implements OnInit {
   }
   onEnviar(event: Event){
     event.preventDefault;
-    this.autenticacionService.IniciarSesion(this.form.value).subscribe(data =>
-      {
-        console.log("DATA:" + JSON.stringify(data));
-        this.ruta.navigate(['/porfolio']);
+    this.autenticacionService.IniciarSesion(this.form.value.password,this.form.value.email).subscribe(data => {
+      this.login = data;
+      console.log(data);        
       })
   }
 }
- /*http://localhost:8080/ver/persona/4*/
+
+export class Credenciales{
+  email: any;
+  password: any;
+}

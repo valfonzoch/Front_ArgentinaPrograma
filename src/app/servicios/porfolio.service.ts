@@ -21,6 +21,8 @@ export class PorfolioService {
     return this.http.put(this.url+'update/persona',persona);
   }
     /*Educacion*/
+  
+
   agregarEducacion(form:any, PersonaId:any): Observable<any>{
     return this.http.post(this.url+'new/educacion/'+ PersonaId, form); 
   }
@@ -80,11 +82,3 @@ export class PorfolioService {
 
 
 
-
-/*tengo que crear uno parecido que me llame a educacion, certificados experiencia etc, porque ete servicio necesita conectarse con el backend, el que hice arriba es la funcion que sirve para comunicarse con persona*/
-
-
-
-
-/*http://localhost:8080/ver/persona/4*/
-/*assets/data/data.json*/

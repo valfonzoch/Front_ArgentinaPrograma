@@ -13,7 +13,7 @@ import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-ses
 import { PorfolioComponent } from './componentes/porfolio/porfolio.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { InterceptorService } from './servicios/interceptor.service';
+/*import { InterceptorService } from './servicios/interceptor.service';*/
 
 
 @NgModule({
@@ -35,8 +35,8 @@ import { InterceptorService } from './servicios/interceptor.service';
     
     
   ],
-  providers: [PorfolioService,
-  {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
+ /* providers: [PorfolioService,
+  {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],*/
  
   bootstrap: [AppComponent]
 })

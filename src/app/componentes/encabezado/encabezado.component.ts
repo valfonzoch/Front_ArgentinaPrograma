@@ -74,4 +74,7 @@ editarPersona():void{
 
   })
 }
+/*login(){
+  return this.autenServe.logged();
+}*/
 }

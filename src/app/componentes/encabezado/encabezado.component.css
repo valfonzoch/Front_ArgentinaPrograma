@@ -70,5 +70,11 @@ div#info-actions {
 
 div#info-actions button {
     margin-right: 8px;
-    margin-top: 20px;
+    margin-top: -40px;
+  
 }
+
+/*Centra la palabra Acerca de*/
+div#acerca h1 {
+    text-align: center;
+ }
