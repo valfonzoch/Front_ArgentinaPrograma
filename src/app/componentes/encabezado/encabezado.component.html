@@ -11,42 +11,42 @@
 <div  class="card mat-card" id="firs-card">
 
     <div id="profile-background">
-    <img [src]="miPorfolio.backImagen"/>
+    <img [src]="miPorfolio?.backImagen"/>
     </div>
 
     <div id="info" style="padding: 16px;">
 
         <div id="info-img">
-            <img class="profile-image" [src]="miPorfolio.imagen"/>
+            <img class="profile-image" [src]="miPorfolio?.imagen"/>
         </div>
 
         <div id="info-data">
             <div>
-                <h1>{{miPorfolio.name}}</h1>
+                <h1>{{miPorfolio?.name}}</h1>
                 <div>
                     <h3>Full Stack Developer Jr.</h3>
                 </div>
                 <div id="info-company">
-                   <h4>{{miPorfolio.position}}</h4> 
+                   <h4>{{miPorfolio?.position}}</h4> 
                 </div>
                 <div id="info-contact">
-                    <span>{{miPorfolio.location}}</span>
+                    <span>{{miPorfolio?.location}}</span>
                     
                 </div>
             </div>
             <ul id="info-details">
                 <li>
-                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#editPer"
+                    <button *ngIf="logueado()" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#editPer"
                     (click)="verPersona(miPorfolio.id)">
                       <img src="assets/img/edit-2.svg" alt="">
                     </button>
                 </li>
                 <li><a href="https://www.axoft.com">
-                    <img width="150px" [src]="miPorfolio.company"/> 
+                  <img width="150px" [src]="miPorfolio?.company"/> 
                 
                     </a></li>
                 <li><a href="http://www.enahp.com/pregrado/modulos/inicio/">
-                <img  class="school-image" width="200px"  [src]="miPorfolio.college">
+                <img  class="school-image" width="200px"  [src]="miPorfolio?.college">
               </a></li>  
             </ul>
         </div>
@@ -58,9 +58,9 @@
     </div>  
     <div class="card mat-card">
         <div class="card-titles" id="acerca">
-            <h1 >{{miPorfolio.title1}}</h1>
+            <h1 >{{miPorfolio?.title1}}</h1>
             <div>
-                <p id="text-acercade">{{miPorfolio.about}}</p>
+                <p id="text-acercade">{{miPorfolio?.about}}</p>
             </div>
             
         </div>

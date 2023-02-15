@@ -11,7 +11,7 @@
     <h1>Educación</h1>
 
  <div>
-    <table *ngFor="let educacion of datos.listEducacion">
+    <table *ngFor="let educacion of datos?.listEducacion">
     
         <tr>
           <th><img class="school-image" width="150px" [src]="educacion.img"></th>

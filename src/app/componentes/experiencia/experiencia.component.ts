@@ -39,6 +39,9 @@ export class ExperienciaComponent implements OnInit {
     this.datosPorfolio.agregarExperiencia(this.form.value ,expId).subscribe(data => {
       console.log(data);
     })
+    this.datosPorfolio.obtenerDatos().subscribe(data =>{
+      this.datos=data;
+    });
   }
 
   verExperiencia(expEdit: any): void {
@@ -75,6 +78,6 @@ borrarExperiencia(id:any, persona:any) {
 }
 
 logueado(){
-  return this.autenticado.logged;
+  return this.autenticado.logged();
  } 
 }

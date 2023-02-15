@@ -30,11 +30,11 @@ export class AutenticacionService {
     return this.http.post(this.url + "/login", credenciales).pipe(map(data => {
       this.login = data;
       if (this.login == true){
-        console.log("entro al true");
+        console.log("está logueado");
         this.ruta.navigate(['/porfolio']);
       } else if (this.login == false){
         console.log (this.login);
-        console.log("entro al false");
+        console.log("no está logueado");
         this.ruta.navigate(['/iniciar-sesion']);  
         alert("Alguno de los datos son incorrectos");    
       }

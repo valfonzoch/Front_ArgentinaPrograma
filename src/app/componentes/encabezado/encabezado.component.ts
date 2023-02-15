@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class EncabezadoComponent implements OnInit {
   form:FormGroup;
   perEdit:any;
 
-  constructor(private datosPorfolio:PorfolioService, private formbuilder: FormBuilder ) {
+  constructor(private datosPorfolio:PorfolioService, private formbuilder: FormBuilder, private autenticado: AutenticacionService) {
     
      this.form = this.formbuilder.group({
 
@@ -74,7 +75,16 @@ editarPersona():void{
 
   })
 }
-/*login(){
-  return this.autenServe.logged();
-}*/
+logueado(){
+  return this.autenticado.logged();
+  
+  /*return this.autenticado.login == true; */
+  /*Angular
+showData() {
+    return (this.element = true);
+  }
+  hideData() {
+    return (this.element = false);
+  }*/
+ } 
 }

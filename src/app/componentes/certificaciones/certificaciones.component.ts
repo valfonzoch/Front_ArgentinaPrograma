@@ -65,6 +65,6 @@ borrarCertificacion(id: any, persona:any){
   })
 }
 logueado(){
-  return this.autenticado.logged;
+  return this.autenticado.logged();
  } 
 }

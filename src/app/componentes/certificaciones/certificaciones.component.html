@@ -7,7 +7,7 @@
   </div>
   <h1>Certificaciones</h1>
   <div>
-      <table *ngFor="let certificaciones of datos.listCertificaciones">
+      <table *ngFor="let certificaciones of datos?.listCertificaciones">
         <th>
           <img width="60px" [src]="certificaciones.img">
         </th>

@@ -78,6 +78,6 @@ export class EducacionComponent implements OnInit {
 }
 
 logueado(){
-  return this.autenticado.logged;
+  return this.autenticado.logged();
  } 
 }
