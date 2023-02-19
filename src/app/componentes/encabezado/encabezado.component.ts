@@ -72,19 +72,11 @@ verPersona(perEdit:any): void {
 }
 editarPersona():void{
   this.datosPorfolio.editarPersona(this.form.value).subscribe(data =>{
-
+    this.ngOnInit();
   })
 }
+
 logueado(){
   return this.autenticado.logged();
-  
-  /*return this.autenticado.login == true; */
-  /*Angular
-showData() {
-    return (this.element = true);
-  }
-  hideData() {
-    return (this.element = false);
-  }*/
  } 
 }

@@ -32,24 +32,19 @@ export class ExperienciaComponent implements OnInit {
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
       this.datos=data;
-    });
+    })
   }
   newExperiencia(event:Event,expId:any):void {
     event.preventDefault;
     this.datosPorfolio.agregarExperiencia(this.form.value ,expId).subscribe(data => {
       console.log(data);
+      this.ngOnInit();
     })
-    this.datosPorfolio.obtenerDatos().subscribe(data =>{
-      this.datos=data;
-    });
   }
 
   verExperiencia(expEdit: any): void {
-    
     this.datosPorfolio.verExperiencia(expEdit).subscribe(data => {
-
       this.form.patchValue({
-
         id: data.id,
         position:data.position,
         company:data.company,
@@ -63,18 +58,21 @@ export class ExperienciaComponent implements OnInit {
       })
       this.expEdit=data;
       console.log(data);
-    });
+    })
   }
     
   editarExperiencia(): void{
     this.datosPorfolio.editarExperiencia(this.form.value).subscribe(data => {
       console.log(data);
       this.expEdit=data;
+      this.ngOnInit();
   })
 }
 borrarExperiencia(id:any, persona:any) {
   this.datosPorfolio.borrarExperiencia(id, persona).subscribe(data => {
+    this.ngOnInit();
   })
+  
 }
 
 logueado(){

@@ -28,7 +28,6 @@ export class EducacionComponent implements OnInit {
       certificate:["", Validators.required],
 
    })
-
    }
 
   ngOnInit(): void {
@@ -38,20 +37,15 @@ export class EducacionComponent implements OnInit {
     });
   }
 
-
-
   newEducacion(event:Event, PersonaId:any):void  {
     event.preventDefault;
     this.datosPorfolio.agregarEducacion(this.form.value, PersonaId).subscribe(data =>{
       console.log(data);
-      
+      this. ngOnInit();
     })
-  
-
   }
 
   verEducacion(eduEdit:any): void {
-
     this.datosPorfolio.verEducacion(eduEdit).subscribe(data => {
       this.form.patchValue({
         id: data.id,
@@ -63,17 +57,20 @@ export class EducacionComponent implements OnInit {
       })
       this.eduEdit=data;
       console.log(data);
-    });
+    })
   }
 
   editarEducacion():void {
     this.datosPorfolio.editarEducacion(this.form.value).subscribe(data => {
       console.log(data);
       this.eduEdit=data;
+      this. ngOnInit();
     })
   }
+
   borrarEducacion(id:any, persona: any) {
     this.datosPorfolio.borrarEducacion(id, persona).subscribe(data => {
+      this. ngOnInit();
   })
 }
 

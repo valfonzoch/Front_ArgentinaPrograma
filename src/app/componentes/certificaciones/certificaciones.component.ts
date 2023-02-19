@@ -28,17 +28,18 @@ export class CertificacionesComponent implements OnInit {
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
       this.datos=data;
-    });
+    })
   }
+
   newCertificaciones(event:Event, cerId:any):void {
     event.preventDefault();
     this.datosPorfolio.agregarCertificado(this.form.value, cerId).subscribe(data =>{
       console.log(data);
+      this. ngOnInit();
     })
 }
 
 verCertificado(cerEdit:any): void {
-
   this.datosPorfolio.verCertificado(cerEdit).subscribe(data => { 
     this.form.patchValue({
       id:data.id,
@@ -57,13 +58,16 @@ editarCertificacion(): void{
   this.datosPorfolio.editarCertificacion(this.form.value).subscribe(data =>{
   console.log(data);
   this.cerEdit=data;
-  
+  this. ngOnInit();
   })
 }
+
 borrarCertificacion(id: any, persona:any){
   this.datosPorfolio.borrarCertificacion(id, persona).subscribe(data =>{
+    this. ngOnInit();
   })
 }
+
 logueado(){
   return this.autenticado.logged();
  } 
