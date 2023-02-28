@@ -11,7 +11,7 @@ import { Credenciales } from '../componentes/iniciar-sesion/iniciar-sesion.compo
   providedIn: 'root'
 })
 export class AutenticacionService {
-  url = 'https://backvane.onrender.com/';                  /*Para pruebas en el local  'http://localhost:8080'; */
+  url = 'https://backvane.onrender.com';                  /*Para pruebas en el local  'http://localhost:8080'; */
   login: any;
   
   constructor(private http:HttpClient, private ruta:Router) { 
