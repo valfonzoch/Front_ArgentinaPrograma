@@ -1,0 +1,80 @@
+/*logos de arriba del encabezado*/
+div#logo1{
+    margin: -30px;
+}
+/*Logo de Argentina Programa*/
+img#Arg{
+    margin-left: 20px;
+}
+/*logo de linkedin y botton de login*/
+div#logoDerecha {
+    float: right;           /* el float alinea a la derecha o a la izquierda*/
+    margin-right: 60px;
+    margin-top: 50px
+    /*margin-left: 50px;*/
+}
+
+.mat-card#firs-card {
+    padding: 0;
+}
+
+/*Define el formato de la imagen que esta de primera como fondo de cabecera*/
+div#profile-background {
+    display: flex;
+    z-index: 1;
+}
+
+/*redondea los bordes superiores de las puntas de la imagen de fondo de cabecera*/
+div#profile-background img {
+    width: 100%;
+    border-radius: 32px 32px 0px 0px; 
+    height: 450px;
+}
+
+/*Define el formato de la imagen de foto*/
+.profile-image {
+    border-radius: 50%; /*Para redondearla*/
+    width: 252px;       
+    height: 252px;
+    margin-top: -200px;
+    z-index: 2; /*Este sirve para superposicionar las imagenes una encima de otra*/
+    position: relative; 
+    padding: 10px 10px;
+   
+}
+/* este alinea a la derecha los logos de axoft y enahp*/
+div#info-data {
+    display: flex; /*Este los alinea a la derecha*/
+    justify-content: space-between; /*Este hace que exista un espacio entre las dos alineaciones*/
+}
+/* este es mi nombre Vanessa Alfonzo*/
+div#info-data h1 {
+    font-size: 3 rem; /*Tamaño de la letra*/
+    display: inline ; /*defie como se va a comportar si en linea o bloque*/
+    font-weight: 500; /*Peso de la negrita*/
+    line-height: 1.25; /*Entrelineado*/
+    word-wrap: break-word; /*Para que no exista desborde de la palabras si tienen margenes pequeños como cuadros*/
+    word-break: break-word;
+}
+/* aca los logos de trabajo y educacion de encabezado lo puse como listas y le puse estos parametros*/
+div#info-data ul#info-details {
+    width: 550px; /*ancho de la lista cambia su ubicacion más adelante o más al margen*/
+    list-style: none; /*Modelo de viñetas*/
+    flex-shrink: 1; /*Si hay varios elementos en una misma linea se contraen para entrar todos es como una especie de justificate el 0 se desborda, el 1 quedan todos alineados y el 2 se justifican los contenidos*/
+    text-align: right;
+}
+
+div#info-actions {
+    display: flex; /* el display flex es para centrar los iconos*/
+}                                        
+
+div#info-actions button {
+    margin-right: 8px;
+    margin-top: -20px;
+  
+}
+
+/*Centra la palabra Acerca de*/
+div#acerca h1 {
+    text-align: center;
+ }

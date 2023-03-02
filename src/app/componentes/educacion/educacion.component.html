@@ -1,20 +1,154 @@
+
 <div class="card mat-card" id="educacion">
+
+<!-- Button crear -->
+<div>
+  <button *ngIf="logueado()" type="button" class= "btn btn-outline-primary" data-toggle="modal" data-target="#crearEdu">  
+    <img src="assets/img/file-plus-2.svg" alt="">
+    </button> 
+  </div>
+
     <h1>Educación</h1>
-    <table>
+
+ <div>
+    <table *ngFor="let educacion of datos?.listEducacion">
+    
         <tr>
-            <th><img  class="school-image" width="150px"  [src]="miPorfolio.education.img" ></th>
-            <th><h3>{{miPorfolio.education.college}}</h3></th>
+          <th><img class="school-image" width="150px" [src]="educacion.img"></th>
+          <th>
+            <h3>{{educacion.college}}</h3>
+          </th>
+          <th>
+            <!-- Button trigger modal -->
+            <div id="botones">
+            <button *ngIf="logueado()" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#editEdu"
+              (click)="verEducacion(educacion.id)">
+              <img src="assets/img/edit-2.svg" alt="">
+            </button>
+            <button *ngIf="logueado()" type="button" class="btn btn-outline-danger"
+              (click)="borrarEducacion(educacion.id, datos.id)">
+              <img src="assets/img/basura.svg" alt=""></button>
+            </div>
+          </th>
         </tr>
         <tr>
             <td></td>
-            <td><h5>{{miPorfolio.education.title}}</h5></td>
+            <td><h5>{{educacion.title}}</h5></td>
         </tr>
         <tr>
             <td></td>
-            <td><p>{{miPorfolio.education.description}}</p></td>
+            <td><p>{{educacion.description}}</p></td>
         </tr>
         <tr>
-            <td><a [href]="miPorfolio.education.certificate"><b>Título</b></a></td>
+            <td><a [href]="educacion.certificate"><b>Título</b></a></td>          
         </tr>
     </table>
+</div>
+
+
+<!-- Modal para Agregar -->
+<div class="modal fade" id="crearEdu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nueva Educacion</h5>
+        <!-- Button cerrar -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="newEducacion($event,datos.id)">
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Colegio</label>
+            <div class="col-sm-10">
+              <input type="text" formControlName="college" class="form-control" id="inputPassword" placeholder="Text">
+              <!--aqui es donde van los nombres de las variables que tengo en el json-->
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Titulo</label>
+            <div class="col-sm-10">
+              <input type="text" formControlName="title" class="form-control" id="inputPassword" placeholder="Text">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Logo</label>
+            <div class="col-sm-10">
+              <input type="text" formControlName="img" class="form-control" id="inputPassword" placeholder="Text">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">descripcion</label>
+            <div class="col-sm-10">
+              <input type="text" formControlName="description" class="form-control" id="inputPassword"
+                placeholder="Text">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Certificado</label>
+            <div class="col-sm-10">
+              <input type="text" formControlName="certificate" class="form-control" id="inputPassword"
+                placeholder="Text">
+            </div>
+          </div>
+          <!-- Button guardar -->
+          <button type="submit" class="btn btn-primay" data-bs-dismiss="modal" Style="margin: 1%;">Grabar</button>
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para Editar-->
+<div class="modal fade" id="editEdu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Eduacion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="editarEducacion()">
+          <input type="hidden" class="form-control" formControlName="id" value={{eduEdit?.id}}>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Colegio</label>
+            <div class="col-sm-10">
+              <input type="text" value={{eduEdit?.college}} formControlName="college" class="form-control">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Titulo</label>
+            <div class="col-sm-10">
+              <input type="text" value={{eduEdit?.title}} formControlName="title" class="form-control">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Logo</label>
+            <div class="col-sm-10">
+              <input type="text" value={{eduEdit?.img}} formControlName="img" class="form-control">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">descripcion</label>
+            <div class="col-sm-10">
+              <input type="text" value={{eduEdit?.description}} formControlName="description" class="form-control">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Certificado</label>
+            <div class="col-sm-10">
+              <input type="text" value={{eduEdit?.certificate}} formControlName="certificate" class="form-control">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primay" data-bs-dismiss="modal" Style="margin: 1%;">Grabar</button>
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

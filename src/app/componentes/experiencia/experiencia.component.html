@@ -1,27 +1,209 @@
 <div class="card mat-card" id="experiencia">
-    <h1>Experiencia</h1>
-    <table *ngFor="let experiencia of experienciaList">
-        <tr>
-            <th>
-                <img  width="50px" [src]="experiencia.img" > 
-            </th>
-            <th>
-                <h6>{{experiencia.position}}</h6>
-                <h5>{{experiencia.company}}</h5>
-            </th>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>{{experiencia.cliente}}</li>
-                    <li>{{experiencia.aplicaciones}}</li>
-                    <li>{{experiencia.consultas}}</li>
-                    <li>{{experiencia.reporte}}</li>
-                    <li>{{experiencia.Metodologia}}</li>
-                    <li>{{experiencia.funciones}}</li>
-                </ul>
-            </td>
-        </tr>
-    </table> 
+
+<!-- Button crear -->   
+    <div>
+        <button *ngIf="logueado()" type="button" class= "btn btn-outline-primary" data-toggle="modal" data-target="#crear">  
+          <img src="assets/img/file-plus-2.svg" alt="">
+        </button>     
+      </div>
+
+<h1>Experiencia</h1>
+
+    <table *ngFor="let experiencia of datos?.listExperiencia">
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+          <!-- Button para ver -->
+          <button *ngIf="logueado()" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#editExp"
+          (click)="verExperiencia(experiencia.id)">
+            <img src="assets/img/edit-2.svg" alt="">
+          </button>
+          <button *ngIf="logueado()" type="button" class="btn btn-outline-danger" (click)="borrarExperiencia(experiencia.id, datos.id)">
+          <img src="assets/img/basura.svg" alt=""></button>
+        </td>
+      </tr>
+      <tr>
+        <th>
+          <img width="50px" [src]="experiencia.img">
+        </th>
+        <th>
+          <h6>{{experiencia.position}}</h6>
+          <h5>{{experiencia.company}}</h5>
+        </th>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <ul>
+            <li>{{experiencia.cliente}}</li>
+            <li>{{experiencia.aplicaciones}}</li>
+            <li>{{experiencia.consultas}}</li>
+            <li>{{experiencia.reporte}}</li>
+            <li>{{experiencia.funciones}}</li>
+            <li>{{experiencia.metodologia}}</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+        </div>
+
+        
+    <!-- Modal para Agregar -->
+    <div class="modal fade" id="crear" tabindex="-1" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form [formGroup]="form" (ngSubmit)="newExperiencia($event,datos.id)">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Nueva Experiencia</h5>
+              <!-- Button cerrar -->
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+    
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Posición</label>
+                <div class="col-sm-10">
+                  <input type="text" formControlName="position" class="form-control" id="inputPassword" placeholder="Text">
+                  <!--aqui es donde van los nombres de las variables que tengo en el json-->
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Compañia</label>
+                <div class="col-sm-10">
+                  <input type="text" formControlName="company" class="form-control" id="inputPassword" placeholder="Text">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Logo</label>
+                <div class="col-sm-10">
+                  <input type="text" formControlName="img" class="form-control" id="inputPassword" placeholder="Text">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Cliente</label>
+                <div class="col-sm-10">
+                  <input type="text" formControlName="cliente" class="form-control" id="inputPassword" placeholder="Text">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Aplicaciones</label>
+                <div class="col-sm-10">
+                  <input type="text" formControlName="aplicaciones" class="form-control" id="inputPassword"
+                    placeholder="Text">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Consultas</label>
+                <div class="col-sm-10">
+                  <input type="text" formControlName="consultas" class="form-control" id="inputPassword" placeholder="Text">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Reporte</label>
+                <div class="col-sm-10">
+                  <input type="text" formControlName="reporte" class="form-control" id="inputPassword" placeholder="Text">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Funciones</label>
+                <div class="col-sm-10">
+                  <input type="text" formControlName="funciones" class="form-control" id="inputPassword" placeholder="Text">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Metodología</label>
+                <div class="col-sm-10">
+                  <input type="text" formControlName="metodologia" class="form-control" id="inputPassword"
+                    placeholder="Text">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primay" data-bs-dismiss="modal" Style="margin: 1%;">Grabar</button>
+              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal para Editar -->
+    <div class="modal fade" id="editExp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar Experiencia</h5>
+            <!--Button cerrar  -->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="form" (ngSubmit)="editarExperiencia()">
+              <input type="hidden" class="form-control" formControlName="id" value="expEdit?.id">
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Posición</label>
+                <div class="col-sm-10">
+                  <input type="text" value="expEdit?.position" formControlName="position" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Compañia</label>
+                <div class="col-sm-10">
+                  <input type="text" value="expEdit?.company" formControlName="company" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Logo</label>
+                <div class="col-sm-10">
+                  <input type="text" value="expEdit?.img" formControlName="img" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Cliente</label>
+                <div class="col-sm-10">
+                  <input type="text" value="expEdit?.cliente" formControlName="cliente" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Aplicaciones</label>
+                <div class="col-sm-10">
+                  <input type="text" value="expEdit?.aplicaciones" formControlName="aplicaciones" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Consultas</label>
+                <div class="col-sm-10">
+                  <input type="text" value="expEdit?.consultas" formControlName="consultas" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Reportes</label>
+                <div class="col-sm-10">
+                  <input type="text" value="expEdit?.reporte" formControlName="reporte" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Funciones</label>
+                <div class="col-sm-10">
+                  <input type="text" value="expEdit?.funciones" formControlName="funciones" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Metodología</label>
+                <div class="col-sm-10">
+                  <input type="text" value="expEdit?.metologia" formControlName="metodologia" class="form-control" />
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primay" data-bs-dismiss="modal" Style="margin: 1%;">Grabar</button>
+              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+            </form> 
+          </div>
+        </div>
+      </div>
+    </div>
+
     

@@ -1,44 +1,141 @@
+<div id="logo1">
+    <img id="Arg" width="150px" src="assets/img/LogoArgProg.png" alt="">
+    <div id="logoDerecha">
+        <a href="https://www.linkedin.com/in/vanessa-alfonzo-1384bb215/">
+            <img id="linke" width="60px" src="assets/img/Linkedin.png" alt=""></a>
+        <button id="login" type="button" class="btn btn-outline-primary">
+            <a class="nav-link" href="/iniciar-sesion">Login</a>
+        </button>
+    </div>
+</div>
 <div  class="card mat-card" id="firs-card">
 
     <div id="profile-background">
-    <img [src]="miPorfolio.backImagen"/>
+    <img [src]="miPorfolio?.backImagen"/>
     </div>
 
     <div id="info" style="padding: 16px;">
 
         <div id="info-img">
-            <img class="profile-image" [src]="miPorfolio.imagen"/>
-            <div  type="button" class="boton1"><img src="assets/img/icons8-pen-48.png" alt=""></div>
+            <img class="profile-image" [src]="miPorfolio?.imagen"/>
         </div>
 
         <div id="info-data">
             <div>
-                <h1>{{miPorfolio.name}}</h1>
+                <h1>{{miPorfolio?.name}}</h1>
+                <div>
+                    <h3>Full Stack Developer Jr.</h3>
+                </div>
                 <div id="info-company">
-                   <h2>{{miPorfolio.position}}</h2> 
+                   <h4>{{miPorfolio?.position}}</h4> 
                 </div>
                 <div id="info-contact">
-                    <span>{{miPorfolio.location}}</span>
-                    <span><a href="#">Información de Contacto</a></span>
+                    <span>{{miPorfolio?.location}}</span>
+                    
                 </div>
             </div>
             <ul id="info-details">
+                <li>
+                    <button *ngIf="logueado()" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#editPer"
+                    (click)="verPersona(miPorfolio.id)">
+                      <img src="assets/img/edit-2.svg" alt="">
+                    </button>
+                </li>
                 <li><a href="https://www.axoft.com">
-                    <img width="100px" [src]="miPorfolio.company.img"/> 
+                  <img width="150px" [src]="miPorfolio?.company"/> 
                 
                     </a></li>
                 <li><a href="http://www.enahp.com/pregrado/modulos/inicio/">
-                <img  class="school-image" width="150px"  [src]="miPorfolio.college.img">
+                <img  class="school-image" width="200px"  [src]="miPorfolio?.college">
               </a></li>  
             </ul>
         </div>
 
         <div id="info-actions">
-            <button type="button" class="btn btn-primary">Tengo interés en</button>
-            <button type="button" class="btn btn-light">Añadir Sección</button>
-            <button type="button" class="btn btn-light">Más</button>
+            <button type="button" class="btn btn-outline-primary"><a href="tel:+5491150080278"><img width="30px" src="assets/img/telefono.png" alt=""></a></button>
+            <button type="button" class="btn btn-outline-primary"><a href="vanessa:valfonzoch@gmail.com"><img width="40px" src="assets/img/mail.png" alt=""></a></button>
         </div>
-
     </div>  
-
+    <div class="card mat-card">
+        <div class="card-titles" id="acerca">
+            <h1 >{{miPorfolio?.title1}}</h1>
+            <div>
+                <p id="text-acercade">{{miPorfolio?.about}}</p>
+            </div>
+            
+        </div>
+    </div>
+    
 </div>
+
+<!-- Modal para Editar -->
+<div class="modal fade" id="editPer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Persona</h5>
+           <!--Button cerrar  -->
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="form" (ngSubmit)="editarPersona()">
+            <input type="hidden" class="form-control" formControlName="id" value="perEdit?.id">
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Nombre y Apellido</label>
+              <div class="col-sm-10">
+                <input type="text" value="perEdit?.name" formControlName="name" class="form-control" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Img Encabezado</label>
+              <div class="col-sm-10">
+                <input type="text" value="perEdit?.backImagen" formControlName="backImagen" class="form-control" />
+              </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Foto de Perfil</label>
+                <div class="col-sm-10">
+                  <input type="text" value="perEdit?.imagen" formControlName="imagen" class="form-control" />
+                </div>
+              </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Posicion Actual</label>
+              <div class="col-sm-10">
+                <input type="text" value="perEdit?.position" formControlName="position" class="form-control" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Compañia Actual</label>
+              <div class="col-sm-10">
+                <input type="text" value="perEdit?.company" formControlName="company" class="form-control" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Egresado de</label>
+              <div class="col-sm-10">
+                <input type="text" value="perEdit?.college" formControlName="college"
+                  class="form-control" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Direccion Actaul</label>
+              <div class="col-sm-10">
+                <input type="text" value="perEdit?.location" formControlName="location" class="form-control" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Sobre ti</label>
+              <div class="col-sm-10">
+                <input type="text" value="perEdit?.about" formControlName="about" class="form-control" />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
