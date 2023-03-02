@@ -1,0 +1,21 @@
+/* Centra la palabra Certificaciones*/
+
+div#certificaciones h1 {
+    text-align: center;
+ }
+
+ /*Para alinear los botones a la derecha*/
+div#botones {
+    padding-left: 100px;
+ }
+
+ div#img {
+ margin: 10px 50px;
+ }
+
+ table td {
+   
+    padding-left: 40px;
+    padding-right: 40px;
+ }
+
