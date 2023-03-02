@@ -1,10 +1,16 @@
 {
   "hosting": {
-    "public": "(public)dist\\mi-proyecto-full-stack",
+    "public": "dist\\mi-proyecto-full-stack",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   }
 }
