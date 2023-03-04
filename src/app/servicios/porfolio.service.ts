@@ -8,7 +8,10 @@ import { Observable } from 'rxjs';
 export class PorfolioService {
   url:string;
   constructor(private http:HttpClient) { 
-    this.url = 'https://backvane.onrender.com';              /* Para pruebas locales 'http://localhost:8080' ; */
+
+
+    this.url = 'https://backvane.onrender.com';              /* Para pruebas locales ;  'http://localhost:8080'*/
+
   }
      /*Persona*/
   obtenerDatos (): Observable<any>{
