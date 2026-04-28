@@ -1,27 +1,118 @@
-# MiProyectoFullStack
+# Front Argentina Programa
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.3.
+Aplicación frontend construida con Angular para mostrar y editar un portfolio profesional (perfil, experiencia, educación y certificaciones), con flujo básico de inicio de sesión.
 
-## Development server
+## Tecnologías
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Angular 14
+- TypeScript
+- RxJS
+- Bootstrap 5
+- Karma + Jasmine (tests unitarios)
+- Firebase Hosting (deploy)
 
-## Code scaffolding
+## Requisitos previos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Node.js 16+ (recomendado LTS)
+- npm 8+
+- Angular CLI 14 (opcional global, se puede usar con `npx`)
 
-## Build
+## Instalación
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm install
+```
 
-## Running unit tests
+## Ejecución local
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm start
+```
 
-## Running end-to-end tests
+La aplicación queda disponible en `http://localhost:4200/`.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Scripts disponibles
 
-## Further help
+- `npm start`: inicia servidor de desarrollo.
+- `npm run build`: genera build de producción en `dist/`.
+- `npm run watch`: build incremental en modo desarrollo.
+- `npm test`: ejecuta tests unitarios con Karma.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Configuración de entorno
+
+Actualmente la URL del backend está hardcodeada en servicios. Se recomienda moverla a `src/environments/environment.ts` y `src/environments/environment.prod.ts` con una clave como:
+
+```ts
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:8080'
+};
+```
+
+Y en producción:
+
+```ts
+export const environment = {
+  production: true,
+  apiUrl: 'https://tu-backend'
+};
+```
+
+## Estructura del proyecto
+
+```text
+src/
+  app/
+    componentes/
+      encabezado/
+      experiencia/
+      educacion/
+      certificaciones/
+      iniciar-sesion/
+      porfolio/
+    servicios/
+      autenticacion.service.ts
+      porfolio.service.ts
+```
+
+## Flujo funcional actual
+
+1. Se cargan datos de persona/portfolio desde el backend.
+2. Se renderizan secciones de perfil, experiencia, educación y certificaciones.
+3. Si la sesión está activa, se habilitan acciones de alta/edición/borrado.
+
+## Despliegue
+
+El repo incluye configuración para Firebase (`firebase.json`, `.firebaserc`).
+
+Build:
+
+```bash
+npm run build
+```
+
+Deploy (si ya tienes Firebase CLI y proyecto configurado):
+
+```bash
+firebase deploy
+```
+
+## Mejoras recomendadas (roadmap corto)
+
+- Mover configuración de API a `environment`.
+- Reemplazar `any` por interfaces tipadas (`Persona`, `Educacion`, etc.).
+- Implementar autenticación robusta con token + guard + interceptor.
+- Corregir validaciones/formularios y bindings en plantillas.
+- Agregar tests de servicios con `HttpTestingController`.
+- Actualizar documentación funcional y técnica.
+
+## Troubleshooting
+
+- Si falla `npm run build` con "`ng` no se reconoce...", ejecuta:
+  - `npm install`
+  - `npx ng build`
+- Si no cargan estilos de Bootstrap en runtime, revisar `angular.json` en `build.options.styles`.
+
+## Créditos
+
+Proyecto creado como parte del recorrido de formación en Argentina Programa.
