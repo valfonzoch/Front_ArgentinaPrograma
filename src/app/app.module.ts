@@ -7,14 +7,11 @@ import { EncabezadoComponent } from './componentes/encabezado/encabezado.compone
 import { ExperienciaComponent } from './componentes/experiencia/experiencia.component';
 import { EducacionComponent } from './componentes/educacion/educacion.component';
 import { CertificacionesComponent } from './componentes/certificaciones/certificaciones.component';
-import { PorfolioService } from './servicios/porfolio.service';
-import { HttpClientModule, HTTP_INTERCEPTORS} from'@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-sesion.component';
 import { PorfolioComponent } from './componentes/porfolio/porfolio.component';
-import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-/*import { InterceptorService } from './servicios/interceptor.service';*/
-
+import { AuthTokenInterceptor } from './servicios/auth-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,12 +29,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule
-    
-    
   ],
- /* providers: [PorfolioService,
-  {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],*/
- 
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthTokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

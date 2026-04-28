@@ -26,10 +26,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('MiProyectoFullStack');
   });
 
-  it('should render title', () => {
+  it('should render router outlet container', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('MiProyectoFullStack app is running!');
+    expect(compiled.querySelector('router-outlet')).toBeTruthy();
   });
 });

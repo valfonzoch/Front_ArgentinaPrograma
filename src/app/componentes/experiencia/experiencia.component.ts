@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
+import { Experiencia, Persona } from 'src/app/modelos/portfolio.models';
 
 @Component({
   selector: 'app-experiencia',
@@ -9,40 +10,42 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
   styleUrls: ['./experiencia.component.css']
 })
 export class ExperienciaComponent implements OnInit {
-  datos: any;
+  datos: Persona | null = null;
   form: FormGroup;
-  expEdit:any;
+  expEdit: Experiencia | null = null;
 
   constructor(private datosPorfolio:PorfolioService, private formbuilder: FormBuilder,private autenticado: AutenticacionService) { 
      
     this.form = this.formbuilder.group({
 
-      id:["",Validators.required], 
-      position:["",Validators.required],
-      company:["", Validators.required],
-      img:["", Validators.required],  
-      cliente:["", Validators.required],
-      aplicaciones:["", Validators.required],
-      consultas: ["", Validators.required],
-      reporte:["", Validators.required],
-      funciones:["", Validators.required],
-      metodologia:["", Validators.required],
-    })
+      id: [0, Validators.required],
+      position: ['', Validators.required],
+      company: ['', Validators.required],
+      img: ['', Validators.required],
+      cliente: ['', Validators.required],
+      aplicaciones: ['', Validators.required],
+      consultas: ['', Validators.required],
+      reporte: ['', Validators.required],
+      funciones: ['', Validators.required],
+      metodologia: ['', Validators.required],
+    });
   }
   ngOnInit(): void {
-    this.datosPorfolio.obtenerDatos().subscribe(data =>{
-      this.datos=data;
-    })
+    this.datosPorfolio.obtenerDatos().subscribe((data) => {
+      this.datos = data;
+    });
   }
-  newExperiencia(event:Event,expId:any):void {
-    event.preventDefault;
-    this.datosPorfolio.agregarExperiencia(this.form.value ,expId).subscribe(data => {
-      console.log(data);
+  newExperiencia(event: Event, expId: number | undefined): void {
+    event.preventDefault();
+    if (!expId) {
+      return;
+    }
+    this.datosPorfolio.agregarExperiencia(this.form.value as Experiencia, expId).subscribe(() => {
       this.ngOnInit();
-    })
+    });
   }
 
-  verExperiencia(expEdit: any): void {
+  verExperiencia(expEdit: number): void {
     this.datosPorfolio.verExperiencia(expEdit).subscribe(data => {
       this.form.patchValue({
         id: data.id,
@@ -56,22 +59,23 @@ export class ExperienciaComponent implements OnInit {
         funciones:data.funciones,
         metodologia:data.metodologia,
       })
-      this.expEdit=data;
-      console.log(data);
-    })
+      this.expEdit = data;
+    });
   }
     
   editarExperiencia(): void{
-    this.datosPorfolio.editarExperiencia(this.form.value).subscribe(data => {
-      console.log(data);
-      this.expEdit=data;
+    this.datosPorfolio.editarExperiencia(this.form.value as Experiencia).subscribe(data => {
+      this.expEdit = data;
       this.ngOnInit();
-  })
+  });
 }
-borrarExperiencia(id:any, persona:any) {
+borrarExperiencia(id: number | undefined, persona: number | undefined): void {
+  if (!id || !persona) {
+    return;
+  }
   this.datosPorfolio.borrarExperiencia(id, persona).subscribe(data => {
     this.ngOnInit();
-  })
+  });
   
 }
 

@@ -105,6 +105,7 @@ firebase deploy
 - Corregir validaciones/formularios y bindings en plantillas.
 - Agregar tests de servicios con `HttpTestingController`.
 - Actualizar documentación funcional y técnica.
+- Ejecutar plan de upgrade en `docs/angular-upgrade-plan.md`.
 
 ## Troubleshooting
 

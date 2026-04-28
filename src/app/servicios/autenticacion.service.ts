@@ -1,51 +1,83 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { Credenciales } from '../componentes/iniciar-sesion/iniciar-sesion.component';
-
+import { environment } from 'src/environments/environment';
+import { Credenciales, LoginResponse } from '../modelos/auth.models';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutenticacionService {
+  private readonly apiUrl = environment.apiUrl;
+  private readonly tokenKey = 'auth_token';
+  private isAuthenticated = false;
 
-
-  url = 'https://backvane.onrender.com';       /*Para pruebas en el local  ;   'http://localhost:8080'*/
-
-  login: any;
-  
-  constructor(private http:HttpClient, private ruta:Router) { 
-    this.login = false;
-    console.log("El servicio de autenticación está corriendo");
+  constructor(private readonly http: HttpClient, private readonly ruta: Router) {
+    this.isAuthenticated = !!this.getToken();
   }
 
-  ObtenerDatos(): Observable<any>{
-    return  this.http.get(this.url + "/ver/persona/4");
+  obtenerDatos(): Observable<unknown> {
+    return this.http.get(`${this.apiUrl}/ver/persona/${environment.defaultPersonaId}`);
   }
 
- IniciarSesion(password: any, email: any):Observable<any>{
-    let credenciales = new Credenciales();
-    credenciales.password = password;
-    credenciales.email = email;
-    return this.http.post(this.url + "/login", credenciales).pipe(map(data => {
-      this.login = data;
-      if (this.login == true){
-        console.log("está logueado");
-        this.ruta.navigate(['/porfolio']);
-      } else if (this.login == false){
-        console.log (this.login);
-        console.log("no está logueado");
-        this.ruta.navigate(['/iniciar-sesion']);  
-        alert("Alguno de los datos son incorrectos");    
-      }
-    }));
+  iniciarSesion(credenciales: Credenciales): Observable<boolean> {
+    return this.http.post<LoginResponse | boolean>(`${this.apiUrl}/login`, credenciales).pipe(
+      map((response) => this.normalizeLoginResponse(response)),
+      tap((authResult) => {
+        if (authResult.authenticated) {
+          if (authResult.token) {
+            this.saveToken(authResult.token);
+          }
+          this.isAuthenticated = true;
+          this.ruta.navigate(['/porfolio']);
+          return;
+        }
 
+        this.clearSession();
+        this.ruta.navigate(['/iniciar-sesion']);
+      }),
+      map((authResult) => authResult.authenticated)
+    );
   }
 
-  logged(){
-    return this.login == true; 
+  logout(): void {
+    this.clearSession();
+    this.ruta.navigate(['/iniciar-sesion']);
+  }
+
+  logged(): boolean {
+    return this.isAuthenticated || !!this.getToken();
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
+  }
+
+  private saveToken(token: string): void {
+    localStorage.setItem(this.tokenKey, token);
+  }
+
+  private clearSession(): void {
+    this.isAuthenticated = false;
+    localStorage.removeItem(this.tokenKey);
+  }
+
+  private normalizeLoginResponse(response: LoginResponse | boolean): { authenticated: boolean; token?: string } {
+    if (typeof response === 'boolean') {
+      return { authenticated: response };
+    }
+
+    const token = response.token ?? response.jwt ?? response.accessToken;
+    const authenticated = Boolean(
+      token ||
+      response.ok ||
+      response.success ||
+      response.authenticated
+    );
+
+    return { authenticated, token };
   }
 }

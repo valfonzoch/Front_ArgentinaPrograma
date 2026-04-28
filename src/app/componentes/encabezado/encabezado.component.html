@@ -4,13 +4,13 @@
         <a href="https://www.linkedin.com/in/vanessa-alfonzo-1384bb215/">
             <img id="linke" width="60px" src="assets/img/Linkedin.png" alt=""></a>
         <button id="login" type="button" class="btn btn-outline-primary">
-            <a class="nav-link" href="/iniciar-sesion">Login</a>
+            <a class="nav-link" [routerLink]="['/iniciar-sesion']">Login</a>
         </button>
     </div>
 </div>
 <div  class="card mat-card" id="firs-card">
     <div id="profile-background">
-    <img [src]="miPorfolio.backImagen"/>
+    <img [src]="miPorfolio?.backImagen"/>
     </div>
     <div id="info" style="padding: 16px;">
         <div id="info-img">
@@ -32,7 +32,7 @@
             <ul id="info-details">
                 <li>
                     <button *ngIf="logueado()" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#editPer"
-                    (click)="verPersona(miPorfolio.id)">
+                    (click)="verPersona(miPorfolio?.id || 0)">
                       <img src="assets/img/edit-2.svg" alt="">
                     </button>
                 </li>
@@ -47,7 +47,7 @@
         </div>
         <div id="info-actions">
             <button type="button" class="btn btn-outline-primary"><a href="tel:+5491150080278"><img width="30px" src="assets/img/telefono.png" alt=""></a></button>
-            <button type="button" class="btn btn-outline-primary"><a href="vanessa:valfonzoch@gmail.com"><img width="40px" src="assets/img/mail.png" alt=""></a></button>
+            <button type="button" class="btn btn-outline-primary"><a href="mailto:valfonzoch@gmail.com"><img width="40px" src="assets/img/mail.png" alt=""></a></button>
         </div>
     </div>  
     <div class="card mat-card">
@@ -72,54 +72,54 @@
         </div>
         <div class="modal-body">
           <form [formGroup]="form" (ngSubmit)="editarPersona()">
-            <input type="hidden" class="form-control" formControlName="id" value="perEdit?.id">
+            <input type="hidden" class="form-control" formControlName="id">
             <div class="form-group row">
               <label for="inputPassword" class="col-sm-2 col-form-label">Nombre y Apellido</label>
               <div class="col-sm-10">
-                <input type="text" value="perEdit?.name" formControlName="name" class="form-control" />
+                <input type="text" formControlName="name" class="form-control" />
               </div>
             </div>
             <div class="form-group row">
               <label for="inputPassword" class="col-sm-2 col-form-label">Img Encabezado</label>
               <div class="col-sm-10">
-                <input type="text" value="perEdit?.backImagen" formControlName="backImagen" class="form-control" />
+                <input type="text" formControlName="backImagen" class="form-control" />
               </div>
             </div>
             <div class="form-group row">
                 <label for="inputPassword" class="col-sm-2 col-form-label">Foto de Perfil</label>
                 <div class="col-sm-10">
-                  <input type="text" value="perEdit?.imagen" formControlName="imagen" class="form-control" />
+                  <input type="text" formControlName="imagen" class="form-control" />
                 </div>
               </div>
             <div class="form-group row">
               <label for="inputPassword" class="col-sm-2 col-form-label">Posicion Actual</label>
               <div class="col-sm-10">
-                <input type="text" value="perEdit?.position" formControlName="position" class="form-control" />
+                <input type="text" formControlName="position" class="form-control" />
               </div>
             </div>
             <div class="form-group row">
               <label for="inputPassword" class="col-sm-2 col-form-label">Compañia Actual</label>
               <div class="col-sm-10">
-                <input type="text" value="perEdit?.company" formControlName="company" class="form-control" />
+                <input type="text" formControlName="company" class="form-control" />
               </div>
             </div>
             <div class="form-group row">
               <label for="inputPassword" class="col-sm-2 col-form-label">Egresado de</label>
               <div class="col-sm-10">
-                <input type="text" value="perEdit?.college" formControlName="college"
+                <input type="text" formControlName="college"
                   class="form-control" />
               </div>
             </div>
             <div class="form-group row">
               <label for="inputPassword" class="col-sm-2 col-form-label">Direccion Actaul</label>
               <div class="col-sm-10">
-                <input type="text" value="perEdit?.location" formControlName="location" class="form-control" />
+                <input type="text" formControlName="location" class="form-control" />
               </div>
             </div>
             <div class="form-group row">
               <label for="inputPassword" class="col-sm-2 col-form-label">Sobre ti</label>
               <div class="col-sm-10">
-                <input type="text" value="perEdit?.about" formControlName="about" class="form-control" />
+                <input type="text" formControlName="about" class="form-control" />
               </div>
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>

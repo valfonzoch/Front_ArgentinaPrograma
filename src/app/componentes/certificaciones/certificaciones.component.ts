@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
+import { Certificacion, Persona } from 'src/app/modelos/portfolio.models';
 
 @Component({
   selector: 'app-certificaciones',
@@ -9,37 +10,40 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
   styleUrls: ['./certificaciones.component.css']
 })
 export class CertificacionesComponent implements OnInit {
-  datos: any;
-  form:FormGroup;
-  cerEdit: any;
+  datos: Persona | null = null;
+  form: FormGroup;
+  cerEdit: Certificacion | null = null;
 
   constructor(private datosPorfolio:PorfolioService, private formBuilder: FormBuilder,private autenticado: AutenticacionService) { 
 
     this.form = this.formBuilder.group({
 
-      id:["",Validators.required],
-      school:["",Validators.required],
-      img:["",Validators.required],
-      title:["",Validators.required],
-      expedition:["",Validators.required],
-      certificate:["",Validators.required],})
+      id: [0, Validators.required],
+      school: ['', Validators.required],
+      img: ['', Validators.required],
+      title: ['', Validators.required],
+      expedition: ['', Validators.required],
+      certificate: ['', Validators.required],
+    });
   }
 
   ngOnInit(): void {
-    this.datosPorfolio.obtenerDatos().subscribe(data =>{
-      this.datos=data;
-    })
+    this.datosPorfolio.obtenerDatos().subscribe((data) => {
+      this.datos = data;
+    });
   }
 
-  newCertificaciones(event:Event, cerId:any):void {
+  newCertificaciones(event: Event, cerId: number | undefined): void {
     event.preventDefault();
-    this.datosPorfolio.agregarCertificado(this.form.value, cerId).subscribe(data =>{
-      console.log(data);
-      this. ngOnInit();
-    })
+    if (!cerId) {
+      return;
+    }
+    this.datosPorfolio.agregarCertificado(this.form.value as Certificacion, cerId).subscribe(() => {
+      this.ngOnInit();
+    });
 }
 
-verCertificado(cerEdit:any): void {
+verCertificado(cerEdit: number): void {
   this.datosPorfolio.verCertificado(cerEdit).subscribe(data => { 
     this.form.patchValue({
       id:data.id,
@@ -50,22 +54,23 @@ verCertificado(cerEdit:any): void {
       certificate:data.certificate,
     })
     this.cerEdit = data;
-    console.log(data);
   });
 }
 
 editarCertificacion(): void{
-  this.datosPorfolio.editarCertificacion(this.form.value).subscribe(data =>{
-  console.log(data);
-  this.cerEdit=data;
-  this. ngOnInit();
-  })
+  this.datosPorfolio.editarCertificacion(this.form.value as Certificacion).subscribe(data => {
+  this.cerEdit = data;
+  this.ngOnInit();
+  });
 }
 
-borrarCertificacion(id: any, persona:any){
-  this.datosPorfolio.borrarCertificacion(id, persona).subscribe(data =>{
-    this. ngOnInit();
-  })
+borrarCertificacion(id: number | undefined, persona: number | undefined): void {
+  if (!id || !persona) {
+    return;
+  }
+  this.datosPorfolio.borrarCertificacion(id, persona).subscribe(() => {
+    this.ngOnInit();
+  });
 }
 
 logueado(){
