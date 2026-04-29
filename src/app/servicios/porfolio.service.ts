@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Certificacion, Educacion, Experiencia, Persona } from '../modelos/portfolio.models';
+import { AutenticacionService } from './autenticacion.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,14 @@ import { Certificacion, Educacion, Experiencia, Persona } from '../modelos/portf
 export class PorfolioService {
   private readonly url = environment.apiUrl;
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(
+    private readonly http: HttpClient,
+    private readonly authService: AutenticacionService
+  ) {}
 
   obtenerDatos(): Observable<Persona> {
-    return this.http.get<Persona>(`${this.url}/ver/persona/${environment.defaultPersonaId}`);
+    const personaId = this.authService.getCurrentPersonaId();
+    return this.http.get<Persona>(`${this.url}/ver/persona/${personaId}`);
   }
 
   verPersona(id: number): Observable<Persona> {

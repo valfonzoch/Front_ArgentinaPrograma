@@ -31,7 +31,7 @@
             </div>
             <ul id="info-details">
                 <li>
-                    <button *ngIf="logueado()" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#editPer"
+                    <button *ngIf="logueado()" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editPer"
                     (click)="verPersona(miPorfolio?.id || 0)">
                       <img src="assets/img/edit-2.svg" alt="">
                     </button>
@@ -66,7 +66,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Editar Persona</h5>
            <!--Button cerrar  -->
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>

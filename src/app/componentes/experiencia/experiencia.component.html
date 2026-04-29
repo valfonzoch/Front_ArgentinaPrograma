@@ -2,7 +2,7 @@
 
 <!-- Button crear -->   
     <div>
-        <button *ngIf="logueado()" type="button" class= "btn btn-outline-primary" data-toggle="modal" data-target="#crear">  
+        <button *ngIf="logueado()" type="button" class= "btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#crear">  
           <img src="assets/img/file-plus-2.svg" alt="">
         </button>     
       </div>
@@ -15,7 +15,7 @@
         <td></td>
         <td>
           <!-- Button para ver -->
-          <button *ngIf="logueado()" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#editExp"
+          <button *ngIf="logueado()" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editExp"
           (click)="verExperiencia(experiencia.id)">
             <img src="assets/img/edit-2.svg" alt="">
           </button>
@@ -57,7 +57,7 @@
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Nueva Experiencia</h5>
               <!-- Button cerrar -->
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -123,7 +123,7 @@
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-primay" data-bs-dismiss="modal" Style="margin: 1%;">Grabar</button>
-              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
             </div>
           </form>
         </div>
@@ -137,7 +137,7 @@
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Editar Experiencia</h5>
             <!--Button cerrar  -->
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -199,7 +199,7 @@
                 </div>
               </div>
               <button type="submit" class="btn btn-primay" data-bs-dismiss="modal" Style="margin: 1%;">Grabar</button>
-              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
             </form> 
           </div>
         </div>

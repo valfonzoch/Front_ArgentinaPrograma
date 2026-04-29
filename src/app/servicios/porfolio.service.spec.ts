@@ -3,10 +3,12 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { PorfolioService } from './porfolio.service';
 import { environment } from 'src/environments/environment';
 import { Persona } from '../modelos/portfolio.models';
+import { AutenticacionService } from './autenticacion.service';
 
 describe('PorfolioService', () => {
   let service: PorfolioService;
   let httpMock: HttpTestingController;
+  let authServiceSpy: jasmine.SpyObj<AutenticacionService>;
 
   const personaMock: Persona = {
     id: 4,
@@ -27,8 +29,12 @@ describe('PorfolioService', () => {
   };
 
   beforeEach(() => {
+    authServiceSpy = jasmine.createSpyObj('AutenticacionService', ['getCurrentPersonaId']);
+    authServiceSpy.getCurrentPersonaId.and.returnValue(environment.defaultPersonaId);
+
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule],
+      providers: [{ provide: AutenticacionService, useValue: authServiceSpy }]
     });
     service = TestBed.inject(PorfolioService);
     httpMock = TestBed.inject(HttpTestingController);

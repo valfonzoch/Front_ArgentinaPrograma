@@ -1,7 +1,7 @@
 <div class="card mat-card" id="certificaciones">
   <!-- Button crear -->
   <div>
-    <button *ngIf="logueado()" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#crearCer">
+    <button *ngIf="logueado()" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#crearCer">
       <img src="assets/img/file-plus-2.svg" alt="">
     </button>
   </div>
@@ -17,8 +17,8 @@
         <th>
           <div id="botones">
             
-            <button *ngIf="logueado()" type="button" class="btn btn-outline-primary" data-toggle="modal"
-              data-target="#editCer" (click)="verCertificado(certificaciones.id)">
+            <button *ngIf="logueado()" type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+              data-bs-target="#editCer" (click)="verCertificado(certificaciones.id)">
               <img src="assets/img/edit-2.svg" alt="">
             </button>
             <button *ngIf="logueado()" type="button" class="btn btn-outline-danger"
@@ -55,7 +55,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Nuevo Certificado</h5>
           <!-- Button cerrar -->
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -96,7 +96,7 @@
             </div>
             <!-- Button guardar -->
             <button type="submit" class="btn btn-primay" data-bs-dismiss="modal" Style="margin: 1%;">Grabar</button>
-            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
           </form>
         </div>
       </div>
@@ -110,7 +110,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Editar Certificado</h5>
           <!-- Button cerrar -->
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -149,7 +149,7 @@
             </div>
             <!-- Button guardar -->
             <button  type="submit" class="btn btn-primay" data-bs-dismiss="modal" Style="margin: 1%;">Grabar</button>
-            <button  type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+            <button  type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
           </form>
         </div>
       </div>

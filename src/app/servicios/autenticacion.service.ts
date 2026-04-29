@@ -16,7 +16,10 @@ export class AutenticacionService {
   private isAuthenticated = false;
 
   constructor(private readonly http: HttpClient, private readonly ruta: Router) {
-    this.isAuthenticated = !!this.getToken();
+    this.isAuthenticated = this.hasValidToken();
+    if (!this.isAuthenticated) {
+      this.clearSession();
+    }
   }
 
   obtenerDatos(): Observable<unknown> {
@@ -49,11 +52,31 @@ export class AutenticacionService {
   }
 
   logged(): boolean {
-    return this.isAuthenticated || !!this.getToken();
+    const isValid = this.hasValidToken();
+    this.isAuthenticated = isValid;
+    if (!isValid) {
+      this.clearSession();
+    }
+    return isValid;
   }
 
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
+  }
+
+  getCurrentPersonaId(): number {
+    const payload = this.decodeTokenPayload(this.getToken());
+    const candidates: unknown[] = [
+      payload?.['personaId'],
+      payload?.['persona_id'],
+      payload?.['id'],
+      payload?.['sub']
+    ];
+    const numericCandidate = candidates
+      .map((value) => Number(value))
+      .find((value) => Number.isFinite(value) && value > 0);
+
+    return numericCandidate ?? environment.defaultPersonaId;
   }
 
   private saveToken(token: string): void {
@@ -79,5 +102,43 @@ export class AutenticacionService {
     );
 
     return { authenticated, token };
+  }
+
+  private hasValidToken(): boolean {
+    const token = this.getToken();
+    if (!token) {
+      return false;
+    }
+
+    const payload = this.decodeTokenPayload(token);
+    if (!payload) {
+      return false;
+    }
+
+    const expiration = payload.exp;
+    if (!expiration || typeof expiration !== 'number') {
+      return true;
+    }
+
+    const nowInSeconds = Math.floor(Date.now() / 1000);
+    return expiration > nowInSeconds;
+  }
+
+  private decodeTokenPayload(token: string | null): { exp?: number; [key: string]: unknown } | null {
+    if (!token) {
+      return null;
+    }
+    const parts = token.split('.');
+    if (parts.length !== 3) {
+      return null;
+    }
+
+    try {
+      const payloadBase64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+      const decodedPayload = atob(payloadBase64);
+      return JSON.parse(decodedPayload);
+    } catch {
+      return null;
+    }
   }
 }
